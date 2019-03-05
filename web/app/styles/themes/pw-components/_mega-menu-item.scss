@@ -1,0 +1,44 @@
+// MegaMenuItem Theme
+// ===
+
+
+// MegaMenu root
+// ---
+//
+// .pw-mega-menu-item_ {}
+
+
+// Content
+// ---
+
+.pw-mega-menu-item__content {
+    &.pw--depth-1 {
+        color: $neutral-00;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    &.pw--depth-1.pw--active {
+        background: $neutral-00;
+
+        color: $secondary-brand-color;
+    }
+
+    &.pw--depth-2 {
+        font-weight: bold;
+    }
+}
+
+
+// Children
+// ---
+
+.pw-mega-menu-item__children {
+    &.pw--depth-0 {
+        background: $secondary-brand-color;
+    }
+
+    &.pw--depth-1 {
+        padding: $unit * 1.5;
+    }
+}

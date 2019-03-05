@@ -1,0 +1,26 @@
+// Feedback Theme
+// ===
+
+
+// Themes: Error
+// ---
+
+.pw-feedback.pw--error {
+    color: $error-color;
+}
+
+.pw-feedback__content {
+    color: $font-color;
+}
+
+// Themes: Block
+// ---
+
+.pw-feedback.pw--block {
+    min-height: $tap-size;
+    padding: $unit*2;
+
+    &.pw--error {
+        background: $feedback-error-color;
+    }
+}

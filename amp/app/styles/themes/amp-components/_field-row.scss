@@ -1,0 +1,10 @@
+@import '../../component-base';
+
+// Field Row
+// ===
+
+.a-field-row {
+    > * + * {
+        margin-left: $unit * 1.5;
+    }
+}

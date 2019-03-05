@@ -1,0 +1,32 @@
+// AccountOrderList
+// ===
+
+.t-account-order-list {
+    // Root Class. Contains all core styles, typically for the template's
+    // wrapper element.
+}
+
+
+// Account Order List Content
+// ---
+//
+
+.t-account-order-list__content {
+    .c-card + .c-card {
+        margin-top: $unit*1.5;
+    }
+}
+
+
+// Account Order List Empty
+// ---
+//
+.t-account-order-list__empty {
+    min-height: $content-height;
+
+    background-color: $neutral-10;
+
+    .pw-breadcrumbs::after {
+        background: transparent;
+    }
+}

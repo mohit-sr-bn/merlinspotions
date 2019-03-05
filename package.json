@@ -1,0 +1,11 @@
+{
+  "name": "platform-scaffold",
+  "version": "2018-Q4R7.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mobify/platform-scaffold.git"
+  },
+  "author": "dev@mobify.com",
+  "license": "SEE LICENSE IN LICENSE.MD",
+  "homepage": "https://github.com/mobify/platform-scaffold#readme"
+}

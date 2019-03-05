@@ -1,0 +1,52 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 27
+
+    defaultConfig {
+        applicationId "com.merlinspotions.progressive"
+        minSdkVersion 19
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {}
+    }
+
+    flavorDimensions "preview"
+    productFlavors {
+        previewEnabled {
+            applicationId "com.merlinspotions.progressive.preview"
+            dimension "preview"
+        }
+        previewDisabled {
+            dimension "preview"
+        }
+    }
+}
+
+task buildJSDebug(type:Exec) {
+    environment "NODE_ENV", "development"
+    commandLine "../../build-js.sh"
+}
+
+task buildJSRelease(type:Exec) {
+    environment "NODE_ENV", "production"
+    commandLine "../../build-js.sh"
+}
+
+afterEvaluate {
+    android.applicationVariants.all { variant ->
+        variant.javaCompiler.dependsOn("buildJS${variant.getBuildType().getName().capitalize()}")
+    }
+}
+
+dependencies {
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation project(':astro')
+}

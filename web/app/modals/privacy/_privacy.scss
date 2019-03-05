@@ -1,0 +1,30 @@
+// Privacy Modal
+// ===
+//
+// 1. Ensure the modal contents "align" to the bottom of the page.
+// 2. Try and ensure that the .pw-sheet__inner box shadow is always visible.
+// 3. Remove box shadow, because it doesn't visually appear to be attached to
+//    the modal, since the modal contents shrink to the size of its content.
+// 4. Clamp the content's height for the offhand chance the content grows larger
+//    than the Sheet's `coverage`.
+// 5. Hide the mask. We want to allow users to interact with the app while
+//    it's open.
+
+.m-privacy {
+    .pw-sheet__wrapper {
+        justify-content: flex-end; // 1
+        padding-top: $unit; // 2
+
+        box-shadow: none; //3
+    }
+
+    .pw-sheet__inner {
+        max-height: 100%; // 4
+
+        box-shadow: $box-shadow; // 2
+    }
+
+    .pw-sheet__mask {
+        display: none; // 5
+    }
+}

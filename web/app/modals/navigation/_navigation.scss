@@ -1,0 +1,45 @@
+// Navigation
+// ===
+
+// Wrapper
+// ---
+//
+// The nav needs to be given dimensions explicitly. In this case, it is
+// mounted as the child of a Sheet, and should fill it completely.
+//
+// 1) Positioned relative to the containing Sheet.
+
+.m-navigation__wrapper {
+    position: absolute; // 1
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    background-color: $neutral-10;
+}
+
+// Social Link
+// ---
+
+.m-navigation__social-link {
+    display: block;
+
+    & + & {
+        margin-left: $unit*3;
+    }
+}
+
+// Copyright
+// ---
+
+.m-navigation__copyright {
+    color: $neutral-40;
+    font-size: $small-font-size;
+    line-height: $font-size;
+    text-align: center;
+}
+
+.m-navigation__padding-end-tap-size {
+    padding-right: $tap-size;
+}

@@ -1,0 +1,26 @@
+// Account Address Theme
+// ===
+
+
+// Account Address Content
+// ---
+//
+.t-account-address__content {
+    .c-card + .c-card {
+        margin-top: $unit*1.5;
+    }
+}
+
+
+// Account Address Empty
+// ---
+//
+.t-account-address__empty {
+    min-height: $content-height;
+
+    background-color: $neutral-10;
+
+    .pw-breadcrumbs::after {
+        background: transparent;
+    }
+}

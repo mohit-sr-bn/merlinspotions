@@ -1,0 +1,28 @@
+// ItemAddedModalContents
+// ===
+//
+// Component description here
+
+
+// Variables
+// ---
+
+
+// ItemAddedModalContents root
+// ---
+
+.c-item-added-modal-contents {
+    // Root Class. Contains all core styles, typically for the component's
+    // wrapper element.
+}
+
+.c-item-added-modal-contents__close {
+    width: $unit*7; // 1
+    height: $unit*7; // 1
+}
+
+.c-item-added-modal-contents__icon {
+    color: $neutral-30;
+
+    fill: $neutral-30;
+}

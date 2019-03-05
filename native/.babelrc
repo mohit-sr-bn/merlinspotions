@@ -1,0 +1,15 @@
+{
+  "presets": ["env"],
+  "plugins": [
+      "babel-plugin-syntax-async-functions",
+      ["transform-async-to-module-method", {
+        "module": "bluebird",
+        "method": "coroutine"
+      }],
+      ["transform-runtime", {
+        "polyfill": true,
+        "regenerator": true
+      }],
+      "transform-es2015-block-scoping"
+    ]
+}

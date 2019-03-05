@@ -1,0 +1,47 @@
+@import 'component-base';
+
+// Search Theme
+// ===
+
+
+// Search Form
+// ---
+
+.a-search__form {
+    position: relative;
+    z-index: $z1-depth + 1;
+
+    border-bottom: $border;
+}
+
+
+// Search Icon
+// ---
+
+.a-search__icon {
+    display: none;
+}
+
+
+// Search Input Field
+// ---
+//
+// 1. Override iOS styles
+
+.a-search__input {
+    min-height: $header-height;
+    padding: $unit*1.5;
+    border: 0;
+
+    &[type] {
+        box-shadow: none; // 1
+    }
+}
+
+
+// Submit
+// ---
+
+.a-search__button-submit {
+    order: 2;
+}

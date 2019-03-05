@@ -1,0 +1,36 @@
+@import '../../styles/component-base';
+
+// Product Details
+// ===
+
+.t-product-details {
+    //
+}
+
+
+// Price
+// ---
+
+.t-product-details__price {
+    font-size: $bigger-font-size;
+    line-height: $huge-line-height;
+}
+
+// Social
+// ---
+
+.t-product-details__social {
+    display: flex;
+    flex-direction: row;
+    margin-right: -($unit * 1.5);
+    margin-left: -($unit * 1.5);
+    padding: 0;
+
+    list-style: none;
+}
+
+.t-product-details__social-button {
+    .a-icon {
+        margin-right: $unit;
+    }
+}

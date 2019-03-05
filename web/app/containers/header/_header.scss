@@ -1,0 +1,239 @@
+// Header
+// ===
+//
+// 1. The expected height of the site HeaderBar (.t-header__bar)
+// 2. The expected height of the site HeaderBar at the "LARGE" and above breakpoint
+
+.t-header {
+    @include susy-breakpoint($large-breakpoint, $susy) {
+        padding-top: 140px; // 2
+    }
+
+    padding-top: $header-height; // 1
+}
+
+.t-header__max-width {
+    flex: 1 0 auto;
+    max-width: $max-width;
+}
+
+
+// Attic
+// ---
+
+.t-header__attic {
+    display: flex;
+    justify-content: center;
+
+    padding: $unit;
+
+    background-color: $brand-color;
+
+    color: #fff;
+    text-align: right;
+}
+
+.t-header__attic-link {
+    margin: 0 $unit;
+
+    color: #fff;
+}
+
+
+// Bar
+// ---
+//
+// 1. Ensure header bar appears above page content
+
+.t-header__bar-wrapper {
+    display: flex;
+    justify-content: center;
+
+    background-color: $brand-color;
+}
+
+.t-header__bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: $z2-depth; // 1
+
+    width: 100vw;
+
+    box-shadow: $large-box-shadow;
+}
+
+
+// Mega Nav
+// ---
+
+.t-header__mega-nav {
+    display: flex;
+    justify-content: center;
+
+    background-color: $secondary-brand-color;
+}
+
+
+// Actions
+// ---
+//
+// 1. Hide shade based on design feedback. See WEB-1982
+
+.t-header__nav-action {
+    @include susy-breakpoint(500px, $susy) {
+        width: span(1/3);
+    }
+
+    width: span(1/2);
+    margin-right: $unit;
+}
+
+.t-header__grouped-actions {
+    display: flex;
+    margin-left: auto;
+
+    .pw-search__shade {
+        background: transparent; // 1
+    }
+}
+
+
+
+
+// Inner Button
+// ---
+//
+// 1. Ensures the icon inside it vertically aligns to the center
+// 2. This value should aim to sit the icon vertically in the middle of `.t-header`
+
+.t-header__inner-button {
+    line-height: 0; // 1
+
+    .pw-icon,
+    .pw-icon-label__label {
+        opacity: 1;
+
+        transform: translateY(0);
+
+        transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    }
+
+    &.t--hide-label {
+        .pw-icon {
+            transform: translateY(40%); // 2
+        }
+
+        .pw-icon-label__label {
+            opacity: 0;
+
+            transform: translateY(100%);
+        }
+    }
+}
+
+
+// Link
+// ---
+
+.t-header__link {
+    color: currentColor;
+
+    &:focus,
+    &:active {
+        color: currentColor;
+    }
+
+    .pw-button__inner {
+        padding: 0;
+    }
+
+    [id*='logo-sparkle-1'],
+    [id*="logo-sparkle-2"] {
+        opacity: 0.3;
+
+        transition: opacity 0.3s ease-in-out;
+    }
+
+    &.t--fade-sparkles {
+        [id*='logo-sparkle-1'],
+        [id*="logo-sparkle-2"] {
+            opacity: 1;
+        }
+    }
+}
+
+
+// Logo
+// ---
+
+.t-header__logo {
+    width: 67px;
+    height: 28px;
+}
+
+
+// Badge
+// ---
+//
+// 1. Absolutely positioned relative to the parent `.u-position-relative` container
+
+.t-header__badge {
+    position: absolute; // 1
+    top: 0;
+    right: 0;
+}
+
+
+// Search
+// ---
+
+.t-header__search {
+    .pw-list-tile__primary {
+        color: $font-color;
+    }
+
+    .pw-list-tile__action {
+        padding: $unit*1.5;
+
+        color: $neutral-40;
+    }
+}
+
+
+// Standalone Modifier
+// ---
+
+.t-header__bar.t--standalone {
+    .t-header-bar__back {
+        order: 1;
+    }
+
+    .t-header-bar__nav {
+        order: 1;
+    }
+
+    .t-header-bar__title {
+        order: 2;
+
+        .pw-header-bar__title {
+            justify-content: initial;
+        }
+    }
+
+    .t-header-bar__search {
+        order: 3;
+    }
+
+    .t-header-bar__cart {
+        order: 4;
+    }
+
+    .t-header-bar__more {
+        order: 5;
+    }
+
+    .pw-icon-label__label {
+        display: none;
+    }
+}

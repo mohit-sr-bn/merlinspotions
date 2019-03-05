@@ -1,0 +1,209 @@
+// _product-list.scss
+// ===
+
+$product-list__custom-ease-out: cubic-bezier(0.35, 0.35, 0.32, 1);
+
+
+// Container
+// ---
+//
+// 1. Ensure the box-shadow at bottom of container is visible
+
+.t-product-list__container {
+    padding: $unit*1.5;
+
+    box-shadow: none;
+
+    @include clearfix;
+}
+
+
+// Main Content
+// ---
+
+.t-product-list__main {
+    @include susy-breakpoint($large-breakpoint, $large-layout) {
+        float: right;
+
+        width: span(9);
+    }
+}
+
+
+// Sidebar
+// ---
+
+.t-product-list__sidebar {
+    @include susy-breakpoint($large-breakpoint, $large-layout) {
+        float: left;
+
+        width: span(3);
+    }
+}
+
+
+// Breadcrumb
+// ---
+//
+// @TODO: Turn this into a component
+//
+// 1. Ensure the container only takes up this amount of vertical space
+
+.t-product-list__breadcrumb {
+    font-size: $unit * 1.5; // 1
+    line-height: $unit * 1.5; // 1
+}
+
+
+// Filter Options
+// ---
+//
+// 1. Keep the enumeration text on a single line on breakpoint switch
+
+.t-product-list__filter {
+    display: flex;
+    flex-direction: column;
+    flex-basis: span(2);
+    margin-right: gutter();
+
+    @include susy-breakpoint($medium-breakpoint, $medium-layout) {
+        flex-direction: row;
+        align-items: center;
+        flex-basis: span(8 of 12);
+    }
+
+    @include susy-breakpoint($large-breakpoint, $large-layout) {
+        flex-basis: span(6 of 9);
+        margin-right: gutter();
+    }
+}
+
+.t-product-list__filter-button {
+    width: 100%;
+    margin-bottom: $unit;
+
+    text-transform: uppercase;
+
+    @include susy-breakpoint($medium-breakpoint, $medium-layout) {
+        width: auto;
+        margin-right: $unit;
+    }
+}
+
+.t-product-list__product-count {
+    margin-bottom: $unit;
+
+    white-space: nowrap; // 1
+}
+
+.t-product-list__active-filter-container {
+    display: flex;
+    align-items: center;
+}
+
+.t-product-list__active-filter {
+    display: flex;
+    align-items: center;
+    margin-right: $unit;
+    padding-left: $unit*1.5;
+
+    background-color: $neutral-15;
+
+    text-transform: capitalize;
+}
+
+.t-product-list__active-filter-cancel {
+    max-width: $unit * 4;
+    max-height: $unit *4;
+}
+
+
+// Sort Options
+// ---
+
+.t-product-list__sort {
+    display: flex;
+    flex-basis: span(2);
+
+    @include susy-breakpoint($medium-breakpoint, $medium-layout) {
+        flex-basis: span(4);
+        margin-left: auto;
+
+        // TODO: Fix this in SDK later, leave it here for styling purposes now.
+        // Field component has a documented "start" value for labelPosition, but
+        // doesn't have any functionality to actually make that happen.
+
+        .pw-field.pw--has-select .pw-field__inner {
+            display: flex;
+            align-items: center;
+        }
+
+        .pw-field__label {
+            margin-right: $unit;
+            margin-bottom: 0;
+        }
+
+        .pw-field__label-wrap.pw--end {
+            flex: unset;
+            order: unset;
+        }
+    }
+}
+
+// Product Items
+// ---
+//
+// 1. Reset the gutter when the grid layout changes.
+
+.t-product-list__contents {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.t-product-list__tile {
+    width: span(2);
+    margin-right: gutter();
+
+    &:nth-child(2n) {
+        margin-right: 0;
+    }
+
+    @include susy-breakpoint($medium-breakpoint, $medium-layout) {
+        width: span(4);
+        margin-right: gutter();
+
+        &:nth-child(2n) {
+            margin-right: gutter(); // 1
+        }
+
+        &:nth-child(3n) {
+            margin-right: 0; // 1
+        }
+    }
+
+    @include susy-breakpoint($large-breakpoint, $large-layout) {
+        width: span(3);
+        margin-right: gutter();
+
+        &:nth-child(3n),
+        &:nth-child(2n) {
+            margin-right: gutter(); // 1
+        }
+
+        &:nth-child(4n) {
+            margin-right: 0; // 1
+        }
+    }
+}
+
+.t-product-list__product-tile {
+    flex-direction: column-reverse;
+}
+
+
+// No Results
+// ---
+
+.t-product-list__no-results-text {
+    padding: ($unit * 3) ($unit * 6) ($unit * 2);
+}

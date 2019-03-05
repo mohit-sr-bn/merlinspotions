@@ -1,0 +1,21 @@
+@import '../../component-base';
+
+// Icon Label Theme
+// ===
+
+.a-icon-label {
+    line-height: 0;
+}
+
+
+// Label
+// ---
+
+.a-icon-label__label {
+    margin-top: $unit/2;
+
+    font-size: 11px;
+    line-height: $unit*1.5;
+    letter-spacing: 0;
+    text-transform: lowercase;
+}

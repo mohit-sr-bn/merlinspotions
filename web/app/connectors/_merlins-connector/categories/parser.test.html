@@ -1,0 +1,588 @@
+<!doctype html>
+<html lang="en-US">
+
+<head>
+    <!-- MOBIFY - DO NOT ALTER - PASTE IMMEDIATELY AFTER OPENING HEAD TAG -->
+    <script>
+        (function(e, o) {
+            var i, t = /(^|;\s*|#|&)mobify-path=?([^;&]*)/,
+                s = e.location.hash,
+                a = o.cookie,
+                n = e.navigator.userAgent,
+                r = t.exec(s) || t.exec(a),
+                c = r && r[2],
+                d = c === "",
+                g = c === "true",
+                l = /non-pwa=(0|1)/,
+                b = l.exec(s) || l.exec(a),
+                p = b && b[1] === "1",
+                f = /ip(hone|od)/i.test(n),
+                h = /android/i.test(n),
+                w = /version\/(\d+).+mobile.+safari/i.exec(n),
+                m = /(chrome|crios)\/(\d+)/i.exec(n),
+                u = (/mobile.+googlebot/i.test(n) || f && w && w[1] >= 9 || (f || h) && m && m[2] >= 53) && !/Edge\/|IEMobile/i.test(n),
+                v = u || g && !p,
+                y = "https://cdn.mobify.com",
+                x = "loader.js",
+                M = y + "/sites/merlinspotions/production/" + x,
+                L = M,
+                A = "production",
+                D = o.location.host.toLowerCase();
+            D === "staging.merlinspotions.com" && (i = A = "staging", L = y + "/sites/merlinspotions/staging/" + x);
+            var P, k;
+            d || (v ? P = L : k = L), e.Mobify = {
+                tagVersion: [8, 4],
+                points: [+new Date],
+                isPreview: g,
+                shouldLoadPWA: v,
+                nonPWAMode: p,
+                optOut: d,
+                syncLoader: P,
+                asyncLoader: k,
+                target: A,
+                alternate: !!i,
+                disableTag: function() {
+                    e.Mobify.disabled = 1, o.visibilityState && o.hidden || (o.cookie = "mobify-path=; expires=" + new Date(Date.now() + 3e5).toGMTString() + "; path=/")
+                }
+            }, P !== M && o.write("<" + "!--")
+        })(window, document);
+    </script>
+    <script src="https://cdn.mobify.com/sites/merlinspotions/production/loader.js" id="mobify-v8-tag" onerror="window.Mobify.disableTag()"></script>
+    <script>
+        -- >
+    </script>
+    <script>
+        (function(e, r) {
+            var a = e.Mobify,
+                n = "mobify-v8-tag",
+                o = "script",
+                i = a.asyncLoader,
+                t = a.syncLoader;
+            if (i) {
+                var s = r.createElement(o),
+                    d = r.getElementsByTagName(o)[0];
+                s.src = i, s.id = n, s.async = !0, s.onerror = a.disableTag, d.parentNode.insertBefore(s, d)
+            } else t && a.alternate && r.write("<" + o + ' src="' + t + '" id="' + n + '" onerror="window.Mobify.disableTag()"></' + o + ">")
+        })(window, document);
+    </script>
+    <!-- END MOBIFY -->
+    <meta name="google-site-verification" content="PiXluDvFKpeUUkkV9DOEAw0KhZD-mMZij18mJMh4f_E" />
+    <script>
+        var require = {
+            "baseUrl": "https://www.merlinspotions.com/static/version1510872490/frontend/Magento/luma/en_US"
+        };
+    </script>
+    <link rel="amphtml" href="https://amp.merlinspotions.com/potions.html">
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="description" content="Welcome to Merlin's Potions. Camelot's number 1 online supplier of potions, books, ingredients and more" />
+    <meta name="robots" content="INDEX,FOLLOW" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
+    <title>Potions</title>
+    <link rel="stylesheet" type="text/css" media="all" href="https://www.merlinspotions.com/static/version1510872490/frontend/Magento/luma/en_US/mage/calendar.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="https://www.merlinspotions.com/static/version1510872490/frontend/Magento/luma/en_US/css/styles-m.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="https://www.merlinspotions.com/static/version1510872490/frontend/Magento/luma/en_US/css/styles.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="https://www.merlinspotions.com/static/version1510872490/frontend/Magento/luma/en_US/Magento_Swatches/css/swatches.css" />
+    <link rel="stylesheet" type="text/css" media="screen and (min-width: 768px)" href="https://www.merlinspotions.com/static/version1510872490/frontend/Magento/luma/en_US/css/styles-l.css" />
+    <link rel="stylesheet" type="text/css" media="print" href="https://www.merlinspotions.com/static/version1510872490/frontend/Magento/luma/en_US/css/print.css" />
+    <script type="text/javascript" src="https://www.merlinspotions.com/static/version1510872490/_cache/merged/573e7b7eb71e63a03da10d79b4698983.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Oswald" href="" />
+    <link rel="icon" type="image/x-icon" href="https://www.merlinspotions.com/media/favicon/default/favicon.png" />
+    <link rel="shortcut icon" type="image/x-icon" href="https://www.merlinspotions.com/media/favicon/default/favicon.png" />
+</head>
+
+<body data-container="body" data-mage-init='{"loaderAjax": {}, "loader": { "icon": "https://www.merlinspotions.com/static/version1510872490/frontend/Magento/luma/en_US/images/loader-2.gif"}}' class="page-with-filter page-products categorypath-potions category-potions catalog-category-view page-layout-2columns-left">
+    <script>
+        require.config({
+            deps: [
+                'jquery',
+                'mage/translate',
+                'jquery/jquery-storageapi'
+            ],
+            callback: function($) {
+                'use strict';
+
+                var dependencies = [],
+                    versionObj;
+
+                $.initNamespaceStorage('mage-translation-storage');
+                $.initNamespaceStorage('mage-translation-file-version');
+                versionObj = $.localStorage.get('mage-translation-file-version');
+
+                if (versionObj.version !== 'a2670990b5cdeb16ae70a4082f561dfbf75d01dc') {
+                    dependencies.push(
+                        'text!js-translation.json'
+                    );
+
+                }
+
+                require.config({
+                    deps: dependencies,
+                    callback: function(string) {
+                        if (typeof string === 'string') {
+                            $.mage.translate.add(JSON.parse(string));
+                            $.localStorage.set('mage-translation-storage', string);
+                            $.localStorage.set(
+                                'mage-translation-file-version', {
+                                    version: 'a2670990b5cdeb16ae70a4082f561dfbf75d01dc'
+                                }
+                            );
+                        } else {
+                            $.mage.translate.add($.localStorage.get('mage-translation-storage'));
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+    <script type="text/x-magento-init">
+        { "*": { "mage/cookies": { "expires": null, "path": "/", "domain": ".www.merlinspotions.com", "secure": false, "lifetime": "3600" } } }
+    </script> <noscript><div class="message global noscript"><div class="content"><p><strong>JavaScript seems to be disabled in your browser.</strong> <span>For the best experience on our site, be sure to turn on Javascript in your browser.</span></p></div></div></noscript>
+    <!-- BEGIN GOOGLE ANALYTICS CODE -->
+    <script>
+        //<![CDATA[
+        (function(i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function() {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+
+        ga('create', 'UA-78284797-2', 'auto');
+        ga('send', 'pageview');
+        //]]>
+    </script>
+    <!-- END GOOGLE ANALYTICS CODE -->
+    <div class="page-wrapper">
+        <header class="page-header">
+            <div class="panel wrapper">
+                <div class="panel header"> <a class="action skip contentarea" href="#contentarea"><span>Skip to Content</span></a>
+                    <ul class="header links">
+                        <li class="greet welcome" data-bind="scope: 'customer'"><span data-bind="text: customer().fullname ? $t('Welcome, %1!').replace('%1', customer().fullname) : 'Welcome to Merlins Potions'"></span></li>
+                        <script type="text/x-magento-init">
+                            { "*": { "Magento_Ui/js/core/app": { "components": { "customer": { "component": "Magento_Customer/js/view/customer" } } } } }
+                        </script>
+                        <li class="authorization-link" data-label="or"><a href="https://www.merlinspotions.com/customer/account/login/">Sign In</a></li>
+                        <li><a href="https://www.merlinspotions.com/customer/account/create/">Create an Account</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="header content"> <span data-action="toggle-nav" class="action nav-toggle"><span>Toggle Nav</span></span> <a class="logo" href="https://www.merlinspotions.com/" title="Merlins Potions"> <img src="https://www.merlinspotions.com/media/logo/default/MerlinsPotions_Logo_Light.png" alt="Merlins Potions" width="259" height="43" /></a>
+                <div data-block="minicart" class="minicart-wrapper"><a class="action showcart" href="https://www.merlinspotions.com/checkout/cart/" data-bind="scope: 'minicart_content'"><span class="text">My Cart</span> <span class="counter qty empty" data-bind="css: { empty: cart().summary_count == 0 }, blockLoader: isLoading"><span class="counter-number"><!-- ko text: cart().summary_count --><!-- /ko --></span> <span class="counter-label"><!-- ko if: cart().summary_count --><!-- ko text: cart().summary_count --><!-- /ko --><!-- ko i18n: 'items' --><!-- /ko --><!-- /ko --></span></span></a>
+                    <div class="block block-minicart empty" data-role="dropdownDialog" data-mage-init='{"dropdownDialog":{ "appendTo":"[data-block=minicart]", "triggerTarget":".showcart", "timeout": "2000", "closeOnMouseLeave": false, "closeOnEscape": true, "triggerClass":"active", "parentClass":"active", "buttons":[]}}'>
+                        <div id="minicart-content-wrapper" data-bind="scope: 'minicart_content'">
+                            <!-- ko template: getTemplate() -->
+                            <!-- /ko -->
+                        </div>
+                    </div>
+                    <script>
+                        window.checkout = {
+                            "shoppingCartUrl": "https:\/\/www.merlinspotions.com\/checkout\/cart\/",
+                            "checkoutUrl": "https:\/\/www.merlinspotions.com\/checkout\/",
+                            "updateItemQtyUrl": "https:\/\/www.merlinspotions.com\/checkout\/sidebar\/updateItemQty\/",
+                            "removeItemUrl": "https:\/\/www.merlinspotions.com\/checkout\/sidebar\/removeItem\/",
+                            "imageTemplate": "Magento_Catalog\/product\/image_with_borders",
+                            "baseUrl": "https:\/\/www.merlinspotions.com\/",
+                            "minicartMaxItemsVisible": 5,
+                            "customerLoginUrl": "https:\/\/www.merlinspotions.com\/customer\/account\/login\/",
+                            "isRedirectRequired": false,
+                            "autocomplete": "off",
+                            "captcha": {
+                                "user_login": {
+                                    "isCaseSensitive": false,
+                                    "imageHeight": 50,
+                                    "imageSrc": "",
+                                    "refreshUrl": "https:\/\/www.merlinspotions.com\/captcha\/refresh\/",
+                                    "isRequired": false
+                                },
+                                "guest_checkout": {
+                                    "isCaseSensitive": false,
+                                    "imageHeight": 50,
+                                    "imageSrc": "",
+                                    "refreshUrl": "https:\/\/www.merlinspotions.com\/captcha\/refresh\/",
+                                    "isRequired": false
+                                }
+                            }
+                        };
+                    </script>
+                    <script type="text/x-magento-init">
+                        { "[data-block='minicart']": { "Magento_Ui/js/core/app": {"components":{"minicart_content":{"children":{"subtotal.container":{"children":{"subtotal":{"children":{"subtotal.totals":{"config":{"display_cart_subtotal_incl_tax":1,"display_cart_subtotal_excl_tax":0,"template":"Magento_Tax\/checkout\/minicart\/subtotal\/totals"},"children":{"subtotal.totals.msrp":{"component":"Magento_Msrp\/js\/view\/checkout\/minicart\/subtotal\/totals","config":{"displayArea":"minicart-subtotal-hidden","template":"Magento_Msrp\/checkout\/minicart\/subtotal\/totals"}}},"component":"Magento_Tax\/js\/view\/checkout\/minicart\/subtotal\/totals"}},"component":"uiComponent","config":{"template":"Magento_Checkout\/minicart\/subtotal"}}},"component":"uiComponent","config":{"displayArea":"subtotalContainer"}},"item.renderer":{"component":"uiComponent","config":{"displayArea":"defaultRenderer","template":"Magento_Checkout\/minicart\/item\/default"},"children":{"item.image":{"component":"Magento_Catalog\/js\/view\/image","config":{"template":"Magento_Catalog\/product\/image","displayArea":"itemImage"}},"checkout.cart.item.price.sidebar":{"component":"uiComponent","config":{"template":"Magento_Checkout\/minicart\/item\/price","displayArea":"priceSidebar"}}}},"extra_info":{"component":"uiComponent","config":{"displayArea":"extraInfo"}},"promotion":{"component":"uiComponent","config":{"displayArea":"promotion"}}},"config":{"itemRenderer":{"default":"defaultRenderer","simple":"defaultRenderer","virtual":"defaultRenderer"},"template":"Magento_Checkout\/minicart\/content"},"component":"Magento_Checkout\/js\/view\/minicart"}},"types":[]}
+                        }, "*": { "Magento_Ui/js/block-loader": "https://www.merlinspotions.com/static/version1510872490/frontend/Magento/luma/en_US/images/loader-1.gif" } }
+                    </script>
+                </div>
+                <div class="block block-search">
+                    <div class="block block-title"><strong>Search</strong></div>
+                    <div class="block block-content">
+                        <form class="form minisearch" id="search_mini_form" action="https://www.merlinspotions.com/catalogsearch/result/" method="get">
+                            <div class="field search"><label class="label" for="search" data-role="minisearch-label"><span>Search</span></label>
+                                <div class="control"><input id="search" data-mage-init='{"quickSearch":{ "formSelector":"#search_mini_form", "url":"https://www.merlinspotions.com/search/ajax/suggest/", "destinationSelector":"#search_autocomplete"} }' type="text" name="q"
+                                        value="" placeholder="Search entire store here..." class="input-text" maxlength="128" role="combobox" aria-haspopup="false" aria-autocomplete="both" autocomplete="off" />
+                                    <div id="search_autocomplete" class="search-autocomplete"></div>
+                                    <div class="nested"><a class="action advanced" href="https://www.merlinspotions.com/catalogsearch/advanced/" data-action="advanced-search">Advanced Search</a></div>
+                                </div>
+                            </div>
+                            <div class="actions"><button type="submit" title="Search" class="action search"><span>Search</span></button></div>
+                        </form>
+                    </div>
+                </div>
+                <ul class="compare wrapper">
+                    <li class="item link compare" data-bind="scope: 'compareProducts'" data-role="compare-products-link"><a class="action compare no-display" title="Compare Products" data-bind="attr: {'href': compareProducts().listUrl}, css: {'no-display': !compareProducts().count}">Compare Products <span class="counter qty" data-bind="text: compareProducts().countCaption"></span></a></li>
+                    <script type="text/x-magento-init">
+                        {"[data-role=compare-products-link]": {"Magento_Ui/js/core/app": {"components":{"compareProducts":{"component":"Magento_Catalog\/js\/view\/compare-products"}}}}}</script>
+                </ul>
+            </div>
+        </header>
+        <div class="sections nav-sections">
+            <div class="section-items nav-sections-items" data-mage-init='{"tabs":{"openedState":"active"}}'>
+                <div class="section-item-title nav-sections-item-title" data-role="collapsible"><a class="nav-sections-item-switch" data-toggle="switch" href="#store.menu">Menu</a></div>
+                <div class="section-item-content nav-sections-item-content" id="store.menu" data-role="content">
+                    <nav class="navigation" role="navigation">
+                        <ul data-mage-init='{"menu":{"responsive":true, "expanded":true, "position":{"my":"left top","at":"left bottom"}}}'>
+                            <li class="level0 nav-1 first active level-top"><a href="https://www.merlinspotions.com/potions.html" class="level-top"><span>Potions</span></a></li>
+                            <li class="level0 nav-2 level-top"><a href="https://www.merlinspotions.com/books.html" class="level-top"><span>Books</span></a></li>
+                            <li class="level0 nav-3 level-top"><a href="https://www.merlinspotions.com/ingredients.html" class="level-top"><span>Ingredients</span></a></li>
+                            <li class="level0 nav-4 level-top"><a href="https://www.merlinspotions.com/supplies.html" class="level-top"><span>Supplies</span></a></li>
+                            <li class="level0 nav-5 level-top"><a href="https://www.merlinspotions.com/charms.html" class="level-top"><span>Charms</span></a></li>
+                            <li class="level0 nav-6 last level-top"><a href="https://www.merlinspotions.com/new-arrivals.html" class="level-top"><span>New Arrivals</span></a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="section-item-title nav-sections-item-title" data-role="collapsible"><a class="nav-sections-item-switch" data-toggle="switch" href="#store.links">Account</a></div>
+                <div class="section-item-content nav-sections-item-content" id="store.links" data-role="content">
+                    <!-- Account links -->
+                </div>
+            </div>
+        </div>
+        <div class="breadcrumbs">
+            <ul class="items">
+                <li class="item home"> <a href="https://www.merlinspotions.com/" title="Go to Home Page">Home</a> </li>
+                <li class="item category3"> <strong>Potions</strong> </li>
+            </ul>
+        </div>
+        <main id="maincontent" class="page-main"> <a id="contentarea" name="contentarea" tabindex="-1"></a>
+            <div class="page-title-wrapper">
+                <h1 class="page-title" id="page-title-heading" aria-labelledby="page-title-heading toolbar-amount"><span class="base" data-ui-id="page-title-wrapper" >Potions</span></h1> </div>
+            <div class="page messages">
+                <div data-placeholder="messages"></div>
+                <div data-bind="scope: 'messages'">
+                    <div data-bind="foreach: { data: cookieMessages, as: 'message' }" class="messages">
+                        <div data-bind="attr: { class: 'message-' + message.type + ' ' + message.type + ' message', 'data-ui-id': 'message-' + message.type }">
+                            <div data-bind="html: message.text"></div>
+                        </div>
+                    </div>
+                    <div data-bind="foreach: { data: messages().messages, as: 'message' }" class="messages">
+                        <div data-bind="attr: { class: 'message-' + message.type + ' ' + message.type + ' message', 'data-ui-id': 'message-' + message.type }">
+                            <div data-bind="html: message.text"></div>
+                        </div>
+                    </div>
+                </div>
+                <script type="text/x-magento-init">
+                    { "*": { "Magento_Ui/js/core/app": { "components": { "messages": { "component": "Magento_Theme/js/view/messages" } } } } }
+                </script>
+            </div>
+            <div class="category-view">
+                <div class="category-description">
+                    <p>Look at all our potions</p>
+                </div>
+            </div>
+            <div class="columns">
+                <div class="column main"><input name="form_key" type="hidden" value="Ya88NShwWDkhmrRc" />
+                    <div id="authenticationPopup" data-bind="scope:'authenticationPopup'" style="display: none;">
+                        <script>
+                            window.authenticationPopup = {
+                                "customerRegisterUrl": "https:\/\/www.merlinspotions.com\/customer\/account\/create\/",
+                                "customerForgotPasswordUrl": "https:\/\/www.merlinspotions.com\/customer\/account\/forgotpassword\/",
+                                "baseUrl": "https:\/\/www.merlinspotions.com\/"
+                            };
+                        </script>
+                        <!-- ko template: getTemplate() -->
+                        <!-- /ko -->
+                        <script type="text/x-magento-init">
+                            { "#authenticationPopup": { "Magento_Ui/js/core/app": {"components":{"authenticationPopup":{"component":"Magento_Customer\/js\/view\/authentication-popup","children":{"messages":{"component":"Magento_Ui\/js\/view\/messages","displayArea":"messages"},"captcha":{"component":"Magento_Captcha\/js\/view\/checkout\/loginCaptcha","displayArea":"additional-login-form-fields","formId":"user_login","configSource":"checkout"}}}}}
+                            }, "*": { "Magento_Ui/js/block-loader": "https://www.merlinspotions.com/static/version1510872490/frontend/Magento/luma/en_US/images/loader-1.gif" } }
+                        </script>
+                    </div>
+                    <script type="text/x-magento-init">
+                        {"*":{"Magento_Customer\/js\/section-config":{"sections":{"stores\/store\/switch":"*","directory\/currency\/switch":"*","*":["messages"],"customer\/account\/logout":"*","customer\/account\/loginpost":"*","customer\/account\/createpost":"*","customer\/ajax\/login":["checkout-data","cart"],"catalog\/product_compare\/add":["compare-products"],"catalog\/product_compare\/remove":["compare-products"],"catalog\/product_compare\/clear":["compare-products"],"sales\/guest\/reorder":["cart"],"sales\/order\/reorder":["cart"],"checkout\/cart\/add":["cart"],"checkout\/cart\/delete":["cart"],"checkout\/cart\/updatepost":["cart"],"checkout\/cart\/updateitemoptions":["cart"],"checkout\/cart\/couponpost":["cart"],"checkout\/cart\/estimatepost":["cart"],"checkout\/cart\/estimateupdatepost":["cart"],"checkout\/onepage\/saveorder":["cart","checkout-data","last-ordered-items"],"checkout\/sidebar\/removeitem":["cart"],"checkout\/sidebar\/updateitemqty":["cart"],"rest\/*\/v1\/carts\/*\/payment-information":["cart","checkout-data"],"rest\/*\/v1\/guest-carts\/*\/payment-information":["cart","checkout-data"],"rest\/*\/v1\/guest-carts\/*\/selected-payment-method":["cart","checkout-data"],"rest\/*\/v1\/carts\/*\/selected-payment-method":["cart","checkout-data"],"multishipping\/checkout\/overviewpost":["cart"],"paypal\/express\/placeorder":["cart","checkout-data"],"paypal\/payflowexpress\/placeorder":["cart","checkout-data"],"authorizenet\/directpost_payment\/place":["cart","checkout-data"],"review\/product\/post":["review"],"braintree\/paypal\/placeorder":["cart","checkout-data"],"wishlist\/index\/add":["wishlist"],"wishlist\/index\/remove":["wishlist"],"wishlist\/index\/updateitemoptions":["wishlist"],"wishlist\/index\/update":["wishlist"],"wishlist\/index\/cart":["wishlist","cart"],"wishlist\/index\/fromcart":["wishlist","cart"],"wishlist\/index\/allcart":["wishlist","cart"],"wishlist\/shared\/allcart":["wishlist","cart"],"wishlist\/shared\/cart":["cart"]},"clientSideSections":["checkout-data"],"baseUrls":["https:\/\/www.merlinspotions.com\/"]}}}</script>
+                    <script type="text/x-magento-init">
+                        {"*":{"Magento_Customer\/js\/customer-data":{"sectionLoadUrl":"https:\/\/www.merlinspotions.com\/customer\/section\/load\/","cookieLifeTime":"3600"}}}</script>
+                    <script type="text/x-magento-init">
+                        { "body": { "pageCache": {"url":"https:\/\/www.merlinspotions.com\/page_cache\/block\/render\/id\/3\/","handles":["default","catalog_category_view","catalog_category_view_type_layered","catalog_category_view_type_layered_without_children","catalog_category_view_id_3"],"originalRequest":{"route":"catalog","controller":"category","action":"view","uri":"\/potions.html"},"versionCookieName":"private_content_version"}
+                        } }
+                    </script>
+                    <div class="toolbar toolbar-products" data-mage-init='{"productListToolbarForm":{"mode":"product_list_mode","direction":"product_list_dir","order":"product_list_order","limit":"product_list_limit","modeDefault":"grid","directionDefault":"asc","orderDefault":"position","limitDefault":"5","url":"https:\/\/www.merlinspotions.com\/potions.html"}}'>
+                        <div class="modes"> <strong class="modes-label" id="modes-label">View as</strong> <strong title="Grid" class="modes-mode active mode-grid" data-value="grid"><span>Grid</span></strong> <a class="modes-mode mode-list" title="List" href="#" data-role="mode-switcher"
+                                data-value="list" id="mode-list" aria-labelledby="modes-label mode-list"><span>List</span></a> </div>
+                        <p class="toolbar-amount" id="toolbar-amount"> <span class="toolbar-number">7</span> items </p>
+                        <div class="pages"><strong class="label pages-label" id="paging-label">Page</strong>
+                            <ul class="items pages-items" aria-labelledby="paging-label">
+                                <li class="item current"><strong class="page"><span class="label">You're currently reading page</span> <span>1</span></strong></li>
+                                <li class="item"><a href="https://www.merlinspotions.com/potions.html?p=2" class="page"><span class="label">Page</span> <span>2</span></a></li>
+                                <li class="item pages-item-next"> <a class="action  next" href="https://www.merlinspotions.com/potions.html?p=2" title="Next"><span class="label">Page</span> <span>Next</span></a></li>
+                            </ul>
+                        </div>
+                        <div class="field limiter"><label class="label" for="limiter"><span>Show</span></label>
+                            <div class="control"><select id="limiter" data-role="limiter" class="limiter-options"> <option value="5" selected="selected">5</option> <option value="10">10</option> <option value="15">15</option></select></div><span class="limiter-text">per page</span></div>
+                        <div class="toolbar-sorter sorter"><label class="sorter-label" for="sorter">Sort By</label> <select id="sorter" data-role="sorter" class="sorter-options"> <option value="position"  selected="selected"  >Position</option> <option value="name"  >Name</option> <option value="price"  >Price</option></select>                            <a title="Set Descending Direction" href="#" class="action sorter-action sort-asc" data-role="direction-switcher" data-value="desc"><span>Set Descending Direction</span></a> </div>
+                    </div>
+                    <div class="products wrapper grid products-grid">
+                        <ol class="products list items product-items">
+                            <li class="item product product-item">
+                                <div class="product-item-info" data-container="product-grid"> <a href="https://www.merlinspotions.com/potions/eye-of-newt.html" class="product photo product-item-photo" tabindex="-1">  <span class="product-image-container" style="width:240px;"><span class="product-image-wrapper" style="padding-bottom: 125%;"><img class="product-image-photo"  src="https://www.merlinspotions.com/media/catalog/product/cache/1/small_image/240x300/beff4985b56e3afdbeabfc89641a4582/e/y/eye-of-newt-1.jpg" width="240" height="300" alt="Eye of Newt Potion"/></span></span></a>
+                                    <div class="product details product-item-details"> <strong class="product name product-item-name"><a class="product-item-link" href="https://www.merlinspotions.com/potions/eye-of-newt.html">Eye Of Newt</a></strong>
+                                        <div class="product-reviews-summary short">
+                                            <div class="rating-summary"><span class="label"><span>Rating:</span></span>
+                                                <div class="rating-result" title="100%"><span style="width:100%"><span>100%</span></span>
+                                                </div>
+                                            </div>
+                                            <div class="reviews-actions"><a class="action view" href="https://www.merlinspotions.com/potions/eye-of-newt.html#reviews">2&nbsp;<span>Reviews</span></a></div>
+                                        </div>
+                                        <div class="price-box price-final_price" data-role="priceBox" data-product-id="1"> <span class="price-container price-final_price tax weee"> <span  id="product-price-1"  data-price-amount="12" data-price-type="finalPrice" class="price-wrapper " ><span class="price">$12.00</span></span>
+                                            </span>
+                                        </div>
+                                        <div class="product-item-inner">
+                                            <div class="product actions product-item-actions">
+                                                <div class="actions-primary">
+                                                    <form data-role="tocart-form" action="https://www.merlinspotions.com/potions/eye-of-newt.html?options=cart" method="post"><input type="hidden" name="product" value="1"><input type="hidden" name="uenc" value="aHR0cHM6Ly93d3cubWVybGluc3BvdGlvbnMuY29tL3BvdGlvbnMvZXllLW9mLW5ld3QuaHRtbD9vcHRpb25zPWNhcnQ,"><input name="form_key"
+                                                            type="hidden" value="Ya88NShwWDkhmrRc" /> <button type="submit" title="Add to Cart" class="action tocart primary"><span>Add to Cart</span></button></form>
+                                                </div>
+                                                <div data-role="add-to-links" class="actions-secondary"> <a href="#" class="action towishlist" title="Wish List" aria-label="Wish List" data-post='{"action":"https:\/\/www.merlinspotions.com\/wishlist\/index\/add\/","data":{"product":"1","uenc":"aHR0cHM6Ly93d3cubWVybGluc3BvdGlvbnMuY29tL3BvdGlvbnMuaHRtbA,,"}}'
+                                                        data-action="add-to-wishlist" role="button"><span>Wish List</span></a> <a href="#" class="action tocompare" title="Compare" aria-label="Compare" data-post='{"action":"https:\/\/www.merlinspotions.com\/catalog\/product_compare\/add\/","data":{"product":"1","uenc":"aHR0cHM6Ly93d3cubWVybGluc3BvdGlvbnMuY29tL3BvdGlvbnMuaHRtbA,,"}}'
+                                                        role="button"><span>Compare</span></a></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="item product product-item">
+                                <div class="product-item-info" data-container="product-grid"> <a href="https://www.merlinspotions.com/potions/unicorn-blood.html" class="product photo product-item-photo" tabindex="-1">  <span class="product-image-container" style="width:240px;"><span class="product-image-wrapper" style="padding-bottom: 125%;"><img class="product-image-photo"  src="https://www.merlinspotions.com/media/catalog/product/cache/1/small_image/240x300/beff4985b56e3afdbeabfc89641a4582/u/n/unicorn-blood-1.jpg" width="240" height="300" alt="Unicorn Blood Potion"/></span></span></a>
+                                    <div class="product details product-item-details"> <strong class="product name product-item-name"><a class="product-item-link" href="https://www.merlinspotions.com/potions/unicorn-blood.html">Unicorn Blood</a></strong>
+                                        <div class="product-item-inner">
+                                            <div class="product actions product-item-actions">
+                                                <div class="actions-primary">
+                                                    <div class="stock unavailable"><span>Out of stock</span></div>
+                                                </div>
+                                                <div data-role="add-to-links" class="actions-secondary"> <a href="#" class="action towishlist" title="Wish List" aria-label="Wish List" data-post='{"action":"https:\/\/www.merlinspotions.com\/wishlist\/index\/add\/","data":{"product":"2","uenc":"aHR0cHM6Ly93d3cubWVybGluc3BvdGlvbnMuY29tL3BvdGlvbnMuaHRtbA,,"}}'
+                                                        data-action="add-to-wishlist" role="button"><span>Wish List</span></a> <a href="#" class="action tocompare" title="Compare" aria-label="Compare" data-post='{"action":"https:\/\/www.merlinspotions.com\/catalog\/product_compare\/add\/","data":{"product":"2","uenc":"aHR0cHM6Ly93d3cubWVybGluc3BvdGlvbnMuY29tL3BvdGlvbnMuaHRtbA,,"}}'
+                                                        role="button"><span>Compare</span></a></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="item product product-item">
+                                <div class="product-item-info" data-container="product-grid"> <a href="https://www.merlinspotions.com/potions/aging-potion.html" class="product photo product-item-photo" tabindex="-1">  <span class="product-image-container" style="width:240px;"><span class="product-image-wrapper" style="padding-bottom: 125%;"><img class="product-image-photo"  src="https://www.merlinspotions.com/media/catalog/product/cache/1/small_image/240x300/beff4985b56e3afdbeabfc89641a4582/a/g/aging-potion-1.jpg" width="240" height="300" alt="Aging Potion"/></span></span></a>
+                                    <div class="product details product-item-details"> <strong class="product name product-item-name"><a class="product-item-link" href="https://www.merlinspotions.com/potions/aging-potion.html">Aging Potion</a></strong>
+                                        <div class="price-box price-final_price" data-role="priceBox"
+                                            data-product-id="3"> <span class="price-container price-final_price tax weee"> <span  id="product-price-3"  data-price-amount="25" data-price-type="finalPrice" class="price-wrapper " ><span class="price">$25.00</span></span>
+                                            </span>
+                                        </div>
+                                        <div class="product-item-inner">
+                                            <div class="product actions product-item-actions">
+                                                <div class="actions-primary">
+                                                    <form data-role="tocart-form" action="https://www.merlinspotions.com/checkout/cart/add/uenc/aHR0cHM6Ly93d3cubWVybGluc3BvdGlvbnMuY29tL3BvdGlvbnMuaHRtbA,,/product/3/" method="post"><input type="hidden" name="product" value="3"><input type="hidden" name="uenc" value="aHR0cHM6Ly93d3cubWVybGluc3BvdGlvbnMuY29tL2NoZWNrb3V0L2NhcnQvYWRkL3VlbmMvYUhSMGNITTZMeTkzZDNjdWJXVnliR2x1YzNCdmRHbHZibk11WTI5dEwzQnZkR2x2Ym5NdWFIUnRiQSwsL3Byb2R1Y3QvMy8,"><input
+                                                            name="form_key" type="hidden" value="Ya88NShwWDkhmrRc" /> <button type="submit" title="Add to Cart" class="action tocart primary"><span>Add to Cart</span></button></form>
+                                                </div>
+                                                <div data-role="add-to-links" class="actions-secondary"> <a href="#" class="action towishlist" title="Wish List" aria-label="Wish List" data-post='{"action":"https:\/\/www.merlinspotions.com\/wishlist\/index\/add\/","data":{"product":"3","uenc":"aHR0cHM6Ly93d3cubWVybGluc3BvdGlvbnMuY29tL3BvdGlvbnMuaHRtbA,,"}}'
+                                                        data-action="add-to-wishlist" role="button"><span>Wish List</span></a> <a href="#" class="action tocompare" title="Compare" aria-label="Compare" data-post='{"action":"https:\/\/www.merlinspotions.com\/catalog\/product_compare\/add\/","data":{"product":"3","uenc":"aHR0cHM6Ly93d3cubWVybGluc3BvdGlvbnMuY29tL3BvdGlvbnMuaHRtbA,,"}}'
+                                                        role="button"><span>Compare</span></a></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="item product product-item">
+                                <div class="product-item-info" data-container="product-grid"> <a href="https://www.merlinspotions.com/potions/aging-potion-1.html" class="product photo product-item-photo" tabindex="-1">  <span class="product-image-container" style="width:240px;"><span class="product-image-wrapper" style="padding-bottom: 125%;"><img class="product-image-photo"  src="https://www.merlinspotions.com/media/catalog/product/cache/1/small_image/240x300/beff4985b56e3afdbeabfc89641a4582/d/r/dragon-tonic-1.jpg" width="240" height="300" alt="Dragon Tonic"/></span></span></a>
+                                    <div class="product details product-item-details"> <strong class="product name product-item-name"><a class="product-item-link" href="https://www.merlinspotions.com/potions/aging-potion-1.html">Dragon Tonic</a></strong>
+                                        <div class="price-box price-final_price" data-role="priceBox"
+                                            data-product-id="4"> <span class="price-container price-final_price tax weee"> <span  id="product-price-4"  data-price-amount="60" data-price-type="finalPrice" class="price-wrapper " ><span class="price">$60.00</span></span>
+                                            </span>
+                                        </div>
+                                        <div class="product-item-inner">
+                                            <div class="product actions product-item-actions">
+                                                <div class="actions-primary">
+                                                    <form data-role="tocart-form" action="https://www.merlinspotions.com/checkout/cart/add/uenc/aHR0cHM6Ly93d3cubWVybGluc3BvdGlvbnMuY29tL3BvdGlvbnMuaHRtbA,,/product/4/" method="post"><input type="hidden" name="product" value="4"><input type="hidden" name="uenc" value="aHR0cHM6Ly93d3cubWVybGluc3BvdGlvbnMuY29tL2NoZWNrb3V0L2NhcnQvYWRkL3VlbmMvYUhSMGNITTZMeTkzZDNjdWJXVnliR2x1YzNCdmRHbHZibk11WTI5dEwzQnZkR2x2Ym5NdWFIUnRiQSwsL3Byb2R1Y3QvNC8,"><input
+                                                            name="form_key" type="hidden" value="Ya88NShwWDkhmrRc" /> <button type="submit" title="Add to Cart" class="action tocart primary"><span>Add to Cart</span></button></form>
+                                                </div>
+                                                <div data-role="add-to-links" class="actions-secondary"> <a href="#" class="action towishlist" title="Wish List" aria-label="Wish List" data-post='{"action":"https:\/\/www.merlinspotions.com\/wishlist\/index\/add\/","data":{"product":"4","uenc":"aHR0cHM6Ly93d3cubWVybGluc3BvdGlvbnMuY29tL3BvdGlvbnMuaHRtbA,,"}}'
+                                                        data-action="add-to-wishlist" role="button"><span>Wish List</span></a> <a href="#" class="action tocompare" title="Compare" aria-label="Compare" data-post='{"action":"https:\/\/www.merlinspotions.com\/catalog\/product_compare\/add\/","data":{"product":"4","uenc":"aHR0cHM6Ly93d3cubWVybGluc3BvdGlvbnMuY29tL3BvdGlvbnMuaHRtbA,,"}}'
+                                                        role="button"><span>Compare</span></a></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="item product product-item">
+                                <div class="product-item-info" data-container="product-grid"> <a href="https://www.merlinspotions.com/potions/aging-potion-2.html" class="product photo product-item-photo" tabindex="-1">  <span class="product-image-container" style="width:240px;"><span class="product-image-wrapper" style="padding-bottom: 125%;"><img class="product-image-photo"  src="https://www.merlinspotions.com/media/catalog/product/cache/1/small_image/240x300/beff4985b56e3afdbeabfc89641a4582/l/o/love-potion-1.jpg" width="240" height="300" alt="Love Potion"/></span></span></a>
+                                    <div class="product details product-item-details"> <strong class="product name product-item-name"><a class="product-item-link" href="https://www.merlinspotions.com/potions/aging-potion-2.html">Love Potion</a></strong>
+                                        <div class="price-box price-final_price" data-role="priceBox"
+                                            data-product-id="5"> <span class="price-container price-final_price tax weee"> <span  id="product-price-5"  data-price-amount="6" data-price-type="finalPrice" class="price-wrapper " ><span class="price">$6.00</span></span>
+                                            </span>
+                                        </div>
+                                        <div class="product-item-inner">
+                                            <div class="product actions product-item-actions">
+                                                <div class="actions-primary">
+                                                    <form data-role="tocart-form" action="https://www.merlinspotions.com/checkout/cart/add/uenc/aHR0cHM6Ly93d3cubWVybGluc3BvdGlvbnMuY29tL3BvdGlvbnMuaHRtbA,,/product/5/" method="post"><input type="hidden" name="product" value="5"><input type="hidden" name="uenc" value="aHR0cHM6Ly93d3cubWVybGluc3BvdGlvbnMuY29tL2NoZWNrb3V0L2NhcnQvYWRkL3VlbmMvYUhSMGNITTZMeTkzZDNjdWJXVnliR2x1YzNCdmRHbHZibk11WTI5dEwzQnZkR2x2Ym5NdWFIUnRiQSwsL3Byb2R1Y3QvNS8,"><input
+                                                            name="form_key" type="hidden" value="Ya88NShwWDkhmrRc" /> <button type="submit" title="Add to Cart" class="action tocart primary"><span>Add to Cart</span></button></form>
+                                                </div>
+                                                <div data-role="add-to-links" class="actions-secondary"> <a href="#" class="action towishlist" title="Wish List" aria-label="Wish List" data-post='{"action":"https:\/\/www.merlinspotions.com\/wishlist\/index\/add\/","data":{"product":"5","uenc":"aHR0cHM6Ly93d3cubWVybGluc3BvdGlvbnMuY29tL3BvdGlvbnMuaHRtbA,,"}}'
+                                                        data-action="add-to-wishlist" role="button"><span>Wish List</span></a> <a href="#" class="action tocompare" title="Compare" aria-label="Compare" data-post='{"action":"https:\/\/www.merlinspotions.com\/catalog\/product_compare\/add\/","data":{"product":"5","uenc":"aHR0cHM6Ly93d3cubWVybGluc3BvdGlvbnMuY29tL3BvdGlvbnMuaHRtbA,,"}}'
+                                                        role="button"><span>Compare</span></a></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ol>
+                    </div>
+                    <div class="toolbar toolbar-products" data-mage-init='{"productListToolbarForm":{"mode":"product_list_mode","direction":"product_list_dir","order":"product_list_order","limit":"product_list_limit","modeDefault":"grid","directionDefault":"asc","orderDefault":"position","limitDefault":"5","url":"https:\/\/www.merlinspotions.com\/potions.html"}}'>
+                        <div class="modes"> <strong class="modes-label" id="modes-label">View as</strong> <strong title="Grid" class="modes-mode active mode-grid" data-value="grid"><span>Grid</span></strong> <a class="modes-mode mode-list" title="List" href="#" data-role="mode-switcher"
+                                data-value="list" id="mode-list" aria-labelledby="modes-label mode-list"><span>List</span></a> </div>
+                        <p class="toolbar-amount" id="toolbar-amount"> <span class="toolbar-number">7</span> items </p>
+                        <div class="pages"><strong class="label pages-label" id="paging-label">Page</strong>
+                            <ul class="items pages-items" aria-labelledby="paging-label">
+                                <li class="item current"><strong class="page"><span class="label">You're currently reading page</span> <span>1</span></strong></li>
+                                <li class="item"><a href="https://www.merlinspotions.com/potions.html?p=2" class="page"><span class="label">Page</span> <span>2</span></a></li>
+                                <li class="item pages-item-next"> <a class="action  next" href="https://www.merlinspotions.com/potions.html?p=2" title="Next"><span class="label">Page</span> <span>Next</span></a></li>
+                            </ul>
+                        </div>
+                        <div class="field limiter"><label class="label" for="limiter"><span>Show</span></label>
+                            <div class="control"><select id="limiter" data-role="limiter" class="limiter-options"> <option value="5" selected="selected">5</option> <option value="10">10</option> <option value="15">15</option></select></div><span class="limiter-text">per page</span></div>
+                        <div class="toolbar-sorter sorter"><label class="sorter-label" for="sorter">Sort By</label> <select id="sorter" data-role="sorter" class="sorter-options"> <option value="position"  selected="selected"  >Position</option> <option value="name"  >Name</option> <option value="price"  >Price</option></select>                            <a title="Set Descending Direction" href="#" class="action sorter-action sort-asc" data-role="direction-switcher" data-value="desc"><span>Set Descending Direction</span></a> </div>
+                    </div>
+                    <script type="text/x-magento-init">
+                        { "[data-role=tocart-form], .form.map.checkout": { "catalogAddToCart": {} } }
+                    </script>
+                    <script type="text/x-magento-init">
+                        { "body": { "requireCookie": {"noCookieUrl":"https:\/\/www.merlinspotions.com\/cookie\/index\/noCookies\/","triggers":{"addToWishlistLink":".action.towishlist"}} } }
+                    </script>
+                </div>
+                <div class="sidebar sidebar-main">
+                    <div class="block filter" id="layered-filter-block" data-mage-init='{"collapsible":{"openedState": "active", "collapsible": true, "active": false, "collateral": { "openedState": "filter-active", "element": "body" } }}'>
+                        <div class="block-title filter-title" data-count="0"><strong data-role="title">Filter</strong></div>
+                        <div class="block-content filter-content"> <strong role="heading" aria-level="2" class="block-subtitle filter-subtitle">Shopping Options</strong>
+                            <div class="filter-options" id="narrow-by-list" data-role="content" data-mage-init='{"accordion":{"openedState": "active", "collapsible": true, "active": false, "multipleCollapsible": false}}'>
+                                <div data-role="collapsible" class="filter-options-item">
+                                    <div data-role="title" class="filter-options-title">Color</div>
+                                    <div data-role="content" class="filter-options-content">
+                                        <ol class="items">
+                                            <li class="item"> <a href="https://www.merlinspotions.com/potions.html?color=8">Red  <span class="count">1<span class="filter-count-label"> item</span></span> </a> </li>
+                                            <li class="item"> <a href="https://www.merlinspotions.com/potions.html?color=11">Green  <span class="count">1<span class="filter-count-label"> item</span></span> </a> </li>
+                                        </ol>
+                                    </div>
+                                </div>
+                                <div data-role="collapsible" class="filter-options-item">
+                                    <div data-role="title" class="filter-options-title">Price</div>
+                                    <div data-role="content" class="filter-options-content">
+                                        <ol class="items">
+                                            <li class="item"> <a href="https://www.merlinspotions.com/potions.html?price=-10"><span class="price">$0.00</span> - <span class="price">$9.99</span>  <span class="count">1<span class="filter-count-label"> item</span></span> </a>                                                </li>
+                                            <li class="item"> <a href="https://www.merlinspotions.com/potions.html?price=10-20"><span class="price">$10.00</span> - <span class="price">$19.99</span>  <span class="count">2<span class="filter-count-label"> items</span></span> </a>                                                </li>
+                                            <li class="item"> <a href="https://www.merlinspotions.com/potions.html?price=20-30"><span class="price">$20.00</span> - <span class="price">$29.99</span>  <span class="count">2<span class="filter-count-label"> items</span></span> </a>                                                </li>
+                                            <li class="item"> <a href="https://www.merlinspotions.com/potions.html?price=30-40"><span class="price">$30.00</span> - <span class="price">$39.99</span>  <span class="count">1<span class="filter-count-label"> item</span></span> </a>                                                </li>
+                                            <li class="item"> <a href="https://www.merlinspotions.com/potions.html?price=60-"><span class="price">$60.00</span> and above  <span class="count">1<span class="filter-count-label"> item</span></span> </a> </li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="sidebar sidebar-additional">
+                    <div class="block block-compare" data-bind="scope: 'compareProducts'" data-role="compare-products-sidebar">
+                        <div class="block-title"><strong id="block-compare-heading" role="heading" aria-level="2">Compare Products</strong> <span class="counter qty no-display" data-bind="text: compareProducts().countCaption, css: {'no-display': !compareProducts().count}"></span></div>
+                        <!-- ko if: compareProducts().count -->
+                        <div class="block-content no-display" aria-labelledby="block-compare-heading" data-bind="css: {'no-display': !compareProducts().count}">
+                            <ol id="compare-items" class="product-items product-items-names" data-bind="foreach: compareProducts().items">
+                                <li class="product-item"><input type="hidden" class="compare-item-id" data-bind="value: id" /><strong class="product-item-name"><a data-bind="attr: {href: product_url}, html: name" class="product-item-link"></a></strong> <a href="#" data-bind="attr: {'data-post': remove_url}"
+                                        title="Remove This Item" class="action delete"><span>Remove This Item</span></a></li>
+                            </ol>
+                            <div class="actions-toolbar">
+                                <div class="primary"><a data-bind="attr: {'href': compareProducts().listUrl}" class="action compare primary"><span>Compare</span></a></div>
+                                <div class="secondary"><a id="compare-clear-all" href="#" class="action clear" data-post="{&quot;action&quot;:&quot;https:\/\/www.merlinspotions.com\/catalog\/product_compare\/clear\/&quot;,&quot;data&quot;:{&quot;uenc&quot;:&quot;&quot;}}"><span>Clear All</span></a></div>
+                            </div>
+                        </div>
+                        <!-- /ko -->
+                        <!-- ko ifnot: compareProducts().count -->
+                        <div class="empty">You have no items to compare.</div>
+                        <!-- /ko -->
+                    </div>
+                    <script type="text/x-magento-init">
+                        {"[data-role=compare-products-sidebar]": {"Magento_Ui/js/core/app": {"components":{"compareProducts":{"component":"Magento_Catalog\/js\/view\/compare-products"}}}}}</script>
+                    <div class="block block-wishlist" data-bind="scope: 'wishlist'">
+                        <div class="block-title"><strong>My Wish List</strong>
+                            <!-- ko if: wishlist().counter --><span data-bind="text: wishlist().counter" class="counter"></span>
+                            <!-- /ko -->
+                        </div>
+                        <div class="block-content"><strong class="subtitle">Last Added Items</strong>
+                            <!-- ko if: wishlist().counter -->
+                            <ol class="product-items no-display" id="wishlist-sidebar" data-bind="foreach: wishlist().items, css: {'no-display': null}">
+                                <li class="product-item">
+                                    <div class="product-item-info">
+                                        <a class="product-item-photo" data-bind="attr: { href: product_url, title: product_name }">
+                                            <!-- ko template: {name: $data.image.template, data: $data.image} -->
+                                            <!-- /ko -->
+                                        </a>
+                                        <div class="product-item-details"><strong class="product-item-name"><a data-bind="attr: { href: product_url }" class="product-item-link"><span data-bind="text: product_name"></span></a></strong>
+                                            <div data-bind="html: product_price"></div>
+                                            <div class="product-item-actions">
+                                                <!-- ko if: product_is_saleable_and_visible -->
+                                                <div class="actions-primary">
+                                                    <!-- ko if: product_has_required_options --><a href="#" data-bind="attr: {'data-post': add_to_cart_params}" class="action tocart primary"><span>Add to Cart</span></a>
+                                                    <!-- /ko -->
+                                                    <!-- ko ifnot: product_has_required_options --><button type="button" class="action tocart primary" data-bind="attr: {'data-post': add_to_cart_params}"><span>Add to Cart</span></button>
+                                                    <!-- /ko -->
+                                                </div>
+                                                <!-- /ko -->
+                                                <div class="actions-secondary"><a href="#" data-bind="attr: {'data-post': delete_item_params}" title="Remove This Item" class="btn-remove action delete"><span>Remove This Item</span></a></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ol>
+                            <div class="actions-toolbar no-display" data-bind="css: {'no-display': null}">
+                                <div class="primary"><a class="action details" href="https://www.merlinspotions.com/wishlist/" title="Go to Wish List"><span>Go to Wish List</span></a></div>
+                            </div>
+                            <!-- /ko -->
+                            <!-- ko ifnot: wishlist().counter -->
+                            <div class="empty">You have no items in your wish list.</div>
+                            <!-- /ko -->
+                        </div>
+                    </div>
+                    <script type="text/x-magento-init">
+                        { "*": { "Magento_Ui/js/core/app": { "components": { "wishlist": { "component": "Magento_Wishlist/js/view/wishlist" } } } } }
+                    </script>
+                </div>
+            </div>
+        </main>
+        <footer class="page-footer">
+            <div class="footer content">
+                <div class="block newsletter">
+                    <div class="title"><strong>Newsletter</strong></div>
+                    <div class="content">
+                        <form class="form subscribe" novalidate action="https://www.merlinspotions.com/newsletter/subscriber/new/" method="post" data-mage-init='{"validation": {"errorClass": "mage-error"}}' id="newsletter-validate-detail">
+                            <div class="field newsletter"><label class="label" for="newsletter"><span>Sign Up for Our Newsletter:</span></label>
+                                <div class="control"><input name="email" type="email" id="newsletter" placeholder="Enter your email address" data-validate="{required:true, 'validate-email':true}" /></div>
+                            </div>
+                            <div class="actions"><button class="action subscribe primary" title="Subscribe" type="submit"><span>Subscribe</span></button></div>
+                        </form>
+                    </div>
+                </div>
+                <ul class="footer links">
+                    <li class="nav item"><a href="https://www.merlinspotions.com/privacy-policy-cookie-restriction-mode/">Privacy and Cookie Policy</a></li>
+                    <li class="nav item"><a href="https://www.merlinspotions.com/search/term/popular/">Search Terms</a></li>
+                    <li class="nav item"><a href="https://www.merlinspotions.com/contact/">Contact Us</a></li>
+                    <li class="nav item"><a href="https://www.merlinspotions.com/sales/guest/form/">Orders and Returns</a></li>
+                    <li class="nav item"><a href="https://www.merlinspotions.com/catalogsearch/advanced/" data-action="advanced-search">Advanced Search</a></li>
+                </ul>
+            </div>
+        </footer> <small class="copyright"><span>Copyright © 2016 Merlin's Potions. All rights reserved.</span></small></div>
+</body>
+
+</html>

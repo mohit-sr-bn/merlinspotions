@@ -1,0 +1,111 @@
+// Home.scss
+// ===
+
+
+// Container
+// ---
+//
+// 1. Display box-shadow properly at bottom of container by increasing position
+//    context above that of the footer (.t-footer__newsletter)
+// 2. Fixes white space appearing below carousel images
+// 3. Force `max-height` on the carousel, since the Image component can't
+//    yet take a `style` prop. @TODO: Add `style` prop to Image?
+// 4. Style loading nearby widget added inline before nearby widget load
+
+.t-home__container {
+    position: relative; // 1
+
+    background-color: white;
+    box-shadow: none;
+
+    font-family: $header-font-family;
+
+    // Added with webfontloader. See loadFonts() in app/container.js
+    .wf-active & {
+        font-family: $loaded-header-font-family;
+    }
+
+    .pw-carousel__inner {
+        max-height: 84vw; // 3
+
+        line-height: 0; // 2
+    }
+
+    .nearby-widget-spinner {
+        padding: $unit*1.5; // 4
+
+        font-family: $font-family; // 4
+        text-align: center; // 4
+
+        .nearby-widget-spinner-img {
+            margin: auto; // 4
+        }
+    }
+}
+
+
+// Category
+// ---
+//
+// 1. We use box-shadow here to simulate the appearance of borders, without
+//    needing to rely on borders from a containing element, AND so that when
+//    any two edges touch, they look like a single border instead of two
+// 2. The first box-shadow is for the bottom and right borders
+// 3. The second box-shadow is for the top and left borders
+// 4. The third box-shadow is fills the 1px gap left in the top right corner
+
+.t-home__category {
+    @include clearfix;
+}
+
+.t-home__category-item {
+    float: left;
+
+    width: #{100% / 2};
+    box-shadow: 1px 1px 0 0 $neutral-15, // 1, 2
+    inset 1px 1px 0 0 $neutral-15, // 1, 3
+    1px 0 0 0 $neutral-15; // 1, 4
+
+    // Ensure the loading placeholders of the home-category-items are centered
+    .pw-skeleton-block {
+        display: inline-block;
+    }
+
+    // Medium Breakpoint Styles
+    @include susy-breakpoint($medium-breakpoint, $medium-layout) {
+        width: #{100% / 3};
+
+        &:not(:nth-child(2n)) {
+            margin-right: initial;
+        }
+    }
+
+    // Large Styles
+    @include susy-breakpoint($large-breakpoint, $large-layout) {
+        width: #{100% / 6};
+    }
+
+    // X-Large Styles
+    @include susy-breakpoint($xlarge-breakpoint, $large-layout) {
+        width: #{100% / 6};
+    }
+}
+
+.t-home__category-text {
+    font-size: $medium-font-size;
+    line-height: $line-height;
+}
+
+.t-home__popular-items {
+    .pw-scroller__item {
+        width: 140px;
+
+        @include susy-breakpoint($medium-breakpoint, $medium-layout) {
+            width: 200px;
+        }
+    }
+}
+
+.t-home__carousel {
+    margin-bottom: 30px;
+}

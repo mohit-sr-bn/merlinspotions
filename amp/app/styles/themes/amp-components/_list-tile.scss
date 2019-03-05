@@ -1,0 +1,33 @@
+@import '../../component-base';
+
+// List Tile Theme
+// ===
+
+// Primary
+// ---
+//
+// 1. Slightly larger than standard font size, at 15px
+
+.a-list-tile__primary {
+    font-size: $font-size + 1; // 1
+}
+
+
+// Content
+// ---
+
+.a-list-tile__content {
+    padding: $unit $unit*1.5;
+}
+
+
+// Action
+// ---
+
+.a-list-tile__action {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: $tap-size;
+    min-height: $tap-size;
+}

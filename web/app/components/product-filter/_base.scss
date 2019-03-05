@@ -1,0 +1,16 @@
+// Product Filter
+// ---
+
+.c-product-filter {
+    border-top: 0;
+}
+
+.c-product-filter__options {
+    margin: -$unit * 1.5;
+}
+
+.c-product-filter__option {
+    width: 100%;
+
+    cursor: pointer;
+}

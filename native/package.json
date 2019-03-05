@@ -1,0 +1,33 @@
+{
+    "messagingSiteId": "merlinspotions",
+    "messagingEnabled": false,
+    "dependencies": {
+        "babel-runtime": "6.11.6",
+        "bluebird": "^2.9.34",
+        "mobify-progressive-app-sdk": "3.0.3",
+        "webpack": "4.6.0",
+        "webpack-cli": "2.0.15"
+    },
+    "devDependencies": {
+        "babel-core": "^6.21.0",
+        "babel-eslint": "^7.1.1",
+        "babel-loader": "7.1.4",
+        "babel-plugin-syntax-async-functions": "^6.13.0",
+        "babel-plugin-transform-async-to-module-method": "^6.16.0",
+        "babel-plugin-transform-es2015-block-scoping": "^6.21.0",
+        "babel-plugin-transform-runtime": "^6.15.0",
+        "babel-preset-env": "1.6.1",
+        "eslint": "^3.12.2",
+        "eslint-loader": "2.0.0",
+        "eslint-plugin-import": "^2.2.0",
+        "mobify-code-style": "^2.7.3",
+        "webpack-bundle-analyzer": "^2.2.1"
+    },
+    "scripts": {
+        "deps": "./scripts/build-dependencies.sh",
+        "build": "webpack --config webpack.app.config.js --mode=$NODE_ENV",
+        "build-analyze": "ASTRO_ANALYZE=true npm run build",
+        "build-onboarding": "cd ../web && npm run build-onboarding",
+        "postinstall": "scripts/update-web-astro-client.sh"
+    }
+}

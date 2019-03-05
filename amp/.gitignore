@@ -1,0 +1,8 @@
+coverage
+/build
+!*/build
+/env
+.python-version
+screenshots
+reports
+./node_modules

@@ -1,0 +1,35 @@
+@import 'component-base';
+
+// Pagination Theme
+// ===
+
+// Pagination
+// ---
+
+.a-pagination__content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1 1 auto;
+}
+
+.a-pagination__button {
+    border: 1px solid $border-color;
+
+    background: $brand-color;
+
+    color: $neutral-00;
+
+    &:active,
+    &:focus {
+        background: $tertiary-brand-color;
+
+        color: $neutral-00;
+    }
+
+    &:disabled {
+        background: transparent;
+
+        color: $neutral-60;
+    }
+}

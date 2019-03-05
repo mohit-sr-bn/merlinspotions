@@ -1,0 +1,37 @@
+@import '../../styles/component-base';
+
+// Navigation
+// ===
+
+// Social Link
+// ---
+
+.m-navigation__social-link {
+    display: block;
+
+    & + & {
+        margin-left: $unit*3;
+    }
+}
+
+
+// Copyright
+// ---
+
+.m-navigation__copyright {
+    color: $neutral-40;
+    font-size: $small-font-size;
+    line-height: $font-size;
+    text-align: center;
+}
+
+
+// Sign In Icon
+// ---
+//
+// 1. Fix icon size to match PWA icon size
+
+.m-navigation__sign-in-icon {
+    width: $unit*2; // 1
+    height: $unit*2; // 1
+}

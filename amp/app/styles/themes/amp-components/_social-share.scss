@@ -1,0 +1,57 @@
+@import 'component-base';
+
+// Social Share Theme
+// ===
+
+.a-social-share {
+    amp-social-share {
+        width: 40px;
+        height: 40px;
+    }
+
+    [type="sms"] {
+        background-color: transparent;
+        background-image: url('/static/svg/sms.svg');
+    }
+
+    [type="facebook"] {
+        background-color: transparent;
+        background-image: url('/static/svg/social-facebook.svg');
+    }
+
+    [type="twitter"] {
+        background-color: transparent;
+        background-image: url('/static/svg/social-twitter.svg');
+    }
+
+    // need to override the base styles
+    [type="email"] {
+        width: 100%;
+        min-height: auto;
+        padding: inherit;
+        border: inherit;
+
+        border-radius: inherit;
+        background-color: transparent;
+        background-image: url('/static/svg/email.svg');
+
+        line-height: inherit;
+
+        -webkit-appearance: inherit;
+        -webkit-tap-highlight-color: inherit;
+    }
+}
+
+.a-social-share__item {
+    text-align: center;
+}
+
+.a-social-share__text {
+    margin-top: $sub-unit;
+
+    color: $neutral-40;
+    font-size: $small-font-size;
+    line-height: $smaller-line-height;
+    letter-spacing: 0;
+    text-transform: capitalize;
+}

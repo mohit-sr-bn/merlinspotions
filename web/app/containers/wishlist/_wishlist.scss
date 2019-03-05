@@ -1,0 +1,15 @@
+// Wishlist
+// ===
+
+.t-wishlist {
+    // Root Class. Contains all core styles, typically for the template's
+    // wrapper element.
+}
+
+
+.t-wishlist__empty {
+    min-height: calc(100vh - #{$header-height} - #{$footer-height});
+    padding-bottom: $unit * 1.5;
+
+    background-color: $neutral-10;
+}

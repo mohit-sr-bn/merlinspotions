@@ -1,0 +1,12 @@
+{
+    "production": {
+        "Homepage": "https://www.merlinspotions.com",
+        "PLP": "https://www.merlinspotions.com/potions.html",
+        "PDP": "https://www.merlinspotions.com/potions/eye-of-newt.html"
+    },
+    "staging": {
+        "Homepage": "https://staging.merlinspotions.com",
+        "PLP": "https://staging.merlinspotions.com/potions.html",
+        "PDP": "https://staging.merlinspotions.com/potions/eye-of-newt.html"
+       }
+}

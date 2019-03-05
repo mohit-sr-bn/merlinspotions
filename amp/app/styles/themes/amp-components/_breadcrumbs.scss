@@ -1,0 +1,20 @@
+@import '../../component-base';
+
+// Breadcrumbs Theme
+// ===
+
+
+// Item
+// ---
+
+.a-breadcrumbs__item {
+    font-size: $small-font-size;
+
+    &:not(:last-of-type)::after {
+        content: '>';
+
+        margin: 0 $unit;
+
+        color: $brand-color;
+    }
+}

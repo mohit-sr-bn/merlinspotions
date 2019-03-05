@@ -1,0 +1,70 @@
+body {
+    background: $neutral-00;
+    padding: 1em;
+    border-top: 1px solid #ccc;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.js-button-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.ask-text {
+    line-height: 1.75;
+}
+
+.bell {
+    min-height: 24px;
+    padding-left: 36px;
+
+    background: url('../app/static/svg/icon-bell.svg') 0 0 no-repeat;
+}
+
+.ask-button {
+    min-height: 30px;
+    padding: 0 15px;
+    border: 0;
+
+    border-radius: 0;
+
+    font-size: 12px;
+    text-transform: uppercase;
+
+    // Button: Allow
+    // -----------------
+    //
+    // For the Soft-Ask Allow button
+
+    &.allow {
+        margin-left: 1em;
+        background: $brand-color;
+
+        color: $neutral-00;
+
+        &:hover {
+            background: $secondary-brand-color;
+        }
+    }
+
+    // Button: Deny
+    // -----------------
+    //
+    // For the Soft-Ask Deny button
+
+    &.deny {
+        color: $neutral-60;
+        background: $neutral-00;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}

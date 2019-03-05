@@ -1,0 +1,20 @@
+@import '../../component-base';
+
+// List Theme
+// ===
+
+.a-list {
+    &.a--borderless {
+        > :not(:first-of-type) {
+            margin-top: $unit;
+            border-top: 0;
+        }
+    }
+}
+
+
+.a-list__item {
+    &:not(:first-of-type) {
+        border-top: 1px solid $neutral-15;
+    }
+}

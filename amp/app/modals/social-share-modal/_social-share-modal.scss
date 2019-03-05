@@ -1,0 +1,29 @@
+@import '../../styles/component-base';
+
+// Social Share
+// ===
+
+.m-social-share-modal__overlay {
+    position: relative; // add position to ensure that modal is on top of amp-lightbox's shade
+    top: 100%;
+    z-index: $z4-depth;
+
+    width: 100%;
+    height: 40%;
+
+    background: $neutral-00;
+
+    transform: translateY(-100%);
+}
+
+.m-social-share-modal__header {
+    background-color: $neutral-00;
+
+    color: $font-color;
+}
+
+.m-social-share-modal__header-title {
+    justify-content: start;
+
+    font-family: $header-font-family;
+}

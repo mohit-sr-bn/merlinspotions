@@ -1,0 +1,34 @@
+// ProductTile
+// ===
+//
+
+
+// ProductTile root
+// ---
+//
+// 1. 172px is the minimum predicated height of the tile based on how large the
+//    images are suppose to be at mobile viewport size. Avoids flash of moving content
+
+.c-product-tile {
+    min-height: $unit * 21.5; // 1
+}
+
+
+// ProductTile name
+// ---
+
+.c-product-tile__name {
+    word-break: break-word;
+}
+
+
+// ProductTile Image
+// ---
+//
+// 1. This is necessary in order to get the ratio effect to work correctly for
+//    when the image is showing it's placeholder skeleton.
+
+.c-product-tile__image {
+    width: 100%; // 1
+    height: 100%; // 1
+}

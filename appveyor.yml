@@ -1,0 +1,30 @@
+# This script configures the build on continuous integration for Windows
+
+# Test against the latest version of this Node.js version
+environment:
+  nodejs_version: "8.9.4"
+
+# Build only on these branches
+branches:
+  only:
+    - master
+    - develop
+
+# Install scripts. (runs after repo cloning)
+install:
+  # Get the latest stable version of Node.js
+  - ps: Install-Product node $env:nodejs_version
+  # install amp modules, which includes web
+  - pushd amp && npm install && popd
+
+# Disable automatic build phase
+build: off
+
+test_script:
+  - pushd amp && npm run smoke-test && popd
+  - pushd web && npm run smoke-test && popd
+
+artifacts:
+  - path: web\tests\screenshots
+    name: Screenshots
+

@@ -1,0 +1,10 @@
+@import '../../component-base';
+
+// AMP Product Tile Theme
+// ===
+//
+
+.a-product-tile + .a-product-tile {
+    margin-top: $unit;
+    border-top: 0;
+}

@@ -1,0 +1,123 @@
+@import '../../component-base';
+
+// Nav Item Theme
+// ===
+//
+// Compared to the original Mobify AMP SDK's NavItem component, this one
+// is customized to include extra icons, etc
+//
+// 1) Provides the positioning context for (2)
+// 2) Is positioned relative to (1)
+
+$nav-item__active-color: #f1f0f7;
+
+.a-nav-item {
+    display: block;
+    height: $unit * 5.5;
+    border: 0;
+
+    background: none;
+
+    color: $neutral-60;
+    font-size: 15px;
+    line-height: 20px;
+    letter-spacing: 0;
+    text-align: left;
+
+    &:active,
+    &:focus {
+        border: 0;
+
+        background: none;
+    }
+
+    .a-link {
+        &:active,
+        &:focus {
+            border: 0;
+
+            background: none;
+        }
+    }
+}
+
+
+.a-nav-item:hover,
+.a-nav-item:active,
+.a-nav-item:visited,
+.a-nav-item:focus {
+    color: $neutral-60;
+}
+
+
+.a-link.a-list-tile__primary {
+    color: $neutral-60;
+
+    &:hover,
+    &:active,
+    &:visited,
+    &:focus {
+        color: $neutral-60;
+    }
+}
+
+
+.a-nav-item.a--selected {
+    background-color: $nav-item__active-color;
+
+    color: $brand-color;
+}
+
+
+.a-nav-item--with-before-icon {
+    padding: 0;
+}
+
+
+.a-nav-item--with-before-icon.a--selected {
+    background-color: $nav-item__active-color;
+
+    color: $neutral-60;
+}
+
+.a-nav-item--with-before-icon,
+.a-nav-item--sign-in.a--selected {
+    background-color: $neutral-10;
+}
+
+.a-nav-item__inner {
+    height: 100%;
+}
+
+.a-nav-item__before-icon {
+    width: $unit * 2;
+    height: $unit * 2;
+}
+
+.a-nav-item__icon {
+    position: relative; // 1
+
+    width: $unit * 5.5;
+    height: $unit * 5.5;
+}
+
+
+.a-nav-item__icon-content {
+    position: absolute; // 2
+    top: 50%;
+    left: 50%;
+
+    width: $unit * 2;
+    height: $unit * 2;
+
+    transform: translate(-50%, -50%);
+}
+
+
+.a-nav-item.a--with-icon {
+    background-color: $neutral-10;
+
+    .a-nav-item__inner {
+        padding: 0;
+    }
+}

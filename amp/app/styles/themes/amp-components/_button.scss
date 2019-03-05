@@ -1,0 +1,116 @@
+@import '../../component-base';
+
+// Button Theme
+// ===
+//
+// 1. Slightly larger than standard font size, at 15px
+
+.a-button {
+    display: inline-table;
+    padding: 0;
+
+    background: none;
+
+    font-family: $font-family;
+    font-size: $font-size + 1; // 1
+    letter-spacing: 1px;
+
+    -webkit-appearance: none;
+
+    &:active,
+    &:focus {
+        background: rgba(255, 255, 255, 0.1);
+    }
+}
+
+
+// Inner
+// ---
+//
+// 1. Ensures that the borderless and bordered buttons appear the same size
+// 2. Match the width of the parent `a-button` container
+
+.a-button__inner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%; // 2
+    min-width: $tap-size;
+    min-height: $tap-size;
+    padding: $unit $unit*1.5;
+    border: 1px solid transparent; // 1
+
+    &.a--no-min-width {
+        min-width: initial;
+    }
+
+    &.a--no-min-height {
+        min-height: initial;
+    }
+}
+
+
+// Themes
+// ---
+
+.a-button.a--primary {
+    background-color: $accent-color;
+
+    color: #fff;
+
+    &:active,
+    &:focus {
+        background-color: $dark-accent-color;
+    }
+}
+
+.a-button.a--secondary {
+    background-color: $brand-color;
+
+    color: #fff;
+
+    &:active,
+    &:focus {
+        background-color: $tertiary-brand-color;
+    }
+}
+
+.a-button.a--tertiary {
+    background-color: transparent;
+
+    color: $brand-color;
+
+    &:active,
+    &:focus {
+        border-color: $tertiary-brand-color;
+
+        color: $tertiary-brand-color;
+    }
+
+    .a-button__inner {
+        border: 1px solid $brand-color;
+    }
+
+    &[disabled] {
+        background-color: $neutral-15;
+
+        color: $neutral-30;
+
+        .a-button__inner {
+            border-color: transparent;
+        }
+    }
+}
+
+.a-button.a--primary,
+.a-button.a--secondary {
+    &[disabled] {
+        background-color: $neutral-15;
+
+        color: $neutral-30;
+    }
+}
+
+.a-button.a--icon-only {
+    line-height: 0;
+}

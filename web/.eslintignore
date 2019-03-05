@@ -1,0 +1,11 @@
+build
+coverage
+app/integration-manager/docs
+app/static
+app/vendor/astro-client.js
+app/vendor/astro-detect.js
+proxy
+tests/e2e/nightwatch-config.js
+tests/e2e/desktop-nightwatch-config.js
+tests/jest-setup.js
+tests/jest-preprocessor.js

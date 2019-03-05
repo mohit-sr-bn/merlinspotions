@@ -1,0 +1,14 @@
+@import 'component-base';
+
+// Sheet Theme
+// ===
+
+// Sheet AMP sidebar elemet
+// ---
+//
+// 1. 80% is the highest, in AMP's built in sidebar there is 80vh !important
+//    style that we cannot override
+
+.a-sheet {
+    width: 80%; // 1
+}

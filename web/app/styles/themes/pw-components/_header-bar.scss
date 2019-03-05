@@ -1,0 +1,31 @@
+// Header Bar Theme
+// ===
+
+.pw-header-bar {
+    padding: $unit $sub-unit;
+
+    background-color: $secondary-brand-color;
+
+    color: $neutral-00;
+}
+
+// Title
+// ---
+
+.pw-header-bar__title {
+    justify-content: flex-start;
+    flex: initial;
+
+    line-height: 0;
+}
+
+// Actions
+// ---
+
+.pw-header-bar__actions {
+    @include susy-breakpoint($large-breakpoint, $large-layout) {
+        margin-left: $unit;
+    }
+
+    margin-left: $sub-unit;
+}

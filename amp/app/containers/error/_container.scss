@@ -1,0 +1,82 @@
+@import '../../styles/component-base';
+
+
+// Error Container
+// ==
+// 
+// 1. We need to get rid of the background color from /web because we cant grow the
+// flexbox with amp. Inherent AMP style restrictions { min-height: auto } prevent us
+// from growing the content
+
+html {
+    background: $neutral-00; // 1
+}
+
+// Header
+// ===
+//
+// 1. The expected height of the site HeaderBar (.t-header__bar)
+            
+.t-header {
+    padding-top: $header-height;
+
+    a {
+        color: white;
+    }
+}
+
+// Header Bar
+// ---
+//
+// 1. Specify both left and right position so that the element fixes itself to
+//    the viewport right away, and less chance of extending past the outside of
+//    the viewport as content loads in.
+// 2. Ensure header bar appears above page content
+
+.t-header__bar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: $z2-depth + 1; // 2
+    max-width: 100vw;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
+
+    .a-header-bar {
+        justify-content: center;
+        min-height: $header-height;
+        padding: 0;
+    }
+}
+
+// Footer
+// ---
+
+.t-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0; // 1
+    z-index: $z2-depth + 1; // 2
+    width: 100%;
+    background-color: $brand-color;
+    color: $neutral-10;
+    font-size: $small-font-size;
+}
+
+// Error Container
+// ---
+// 
+// 1. Sets appropriate header styles
+// 2. Sets content background and padding
+
+.t-error-container {
+    h1 {
+        font-family: $header-font-family;
+        font-size: $bigger-font-size * 1.5;
+    }
+}
+
+.t-error-container-content {
+    padding-bottom: $unit * 2;
+    background: $neutral-10;
+}

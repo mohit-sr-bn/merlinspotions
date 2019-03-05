@@ -1,0 +1,36 @@
+site_id: merlinspotions
+
+config:
+    mobify_property_id: merlinspotions
+    business_slug: merlinspotions
+    cloud_slug: merlinspotions
+
+    # Human-readable site name
+    friendly_site_name: www.merlinspotions.com
+
+    # Must be a 192x192 icon file.
+    default_icon_url: https://cdn.mobify.com/sites/merlinspotions/production/static/img/global/app-icon.png
+
+    # Default is to use the URL for the target domain, via https
+    default_url: https://www.merlinspotions.com
+
+    # The domain (netloc) of the project's website, which must be
+    # https-everywhere. Do not include the 'https://' here - this
+    # is the domain name only.
+    target_domain: www.merlinspotions.com
+
+    allowed_secure_domains: [performance.merlinspotions.com]
+
+    # This is set for a Progressive Web App
+    pwa: true
+
+    # The App ID for iOS
+    apn_app_id: com.merlinspotions.progressive
+
+    # The name of the certificate used for iOS push.
+    apn_native_certificate_name: com.merlinspotions.progressive
+
+    # Send a push message to new subscribers confirming
+    # that they have subscribed.
+    send_welcome_message: false
+

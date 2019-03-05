@@ -1,0 +1,61 @@
+@import '../../component-base';
+
+// Swatch Theme
+// ===
+
+
+// Item
+// ---
+
+.a-swatch__item {
+    border: $border;
+
+    amp-selector &[selected],
+    &.a--selected {
+        border-color: $brand-color;
+
+        &:focus {
+            outline-width: 5px;
+            outline-style: auto;
+            outline-color: $focus-color;
+            outline-color: -webkit-focus-ring-color; // sass-lint:disable-line no-duplicate-properties
+        }
+
+        + .a-swatch__error {
+            display: none;
+        }
+    }
+}
+
+
+// Label
+// ---
+
+.a-swatch__label {
+    display: inline-block;
+    margin-bottom: 4px;
+
+    font-weight: bold;
+}
+
+
+// Button
+// ---
+
+.a-swatch__button {
+    color: $neutral-40;
+    text-transform: uppercase;
+}
+
+.a-swatch__button-inner {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+
+// Error
+// ---
+
+.a-swatch__error {
+    color: $error-color;
+}

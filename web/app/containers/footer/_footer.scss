@@ -1,0 +1,97 @@
+// Footer
+// ===
+
+// Root
+// ---
+
+.t-footer {
+    padding: gutter()*2;
+
+    background-color: $secondary-brand-color;
+
+    color: $neutral-00;
+    text-align: center;
+}
+
+
+// Navigation
+// ---
+
+.t-footer__navigation {
+    @include susy-breakpoint($medium-breakpoint, $medium-layout) {
+        display: flex;
+        justify-content: space-around;
+    }
+    @include susy-breakpoint($large-breakpoint, $large-layout) {
+        justify-content: space-between;
+        margin-bottom: $unit*2;
+
+        text-align: left;
+    }
+
+    color: $neutral-00;
+}
+
+.t-footer__navigation-section {
+    flex-basis: span(3);
+    margin-right: gutter();
+
+    &:last-child {
+        margin-right: 0;
+    }
+}
+
+.t-footer__navigation-header {
+    margin-bottom: $unit;
+
+    font-family: $font-family !important;
+    font-weight: $bold-font-weight;
+    font-size: $font-size;
+}
+
+.t-footer__navigation-link {
+    display: block;
+    margin-bottom: $unit;
+
+    color: $neutral-00;
+    font-size: $small-font-size;
+}
+
+
+// Extras
+// ---
+
+.t-footer__extras {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+}
+
+
+// Social Links
+
+.t-footer__social-link {
+    margin-right: $unit;
+
+    color: $neutral-00;
+}
+
+
+// Locale
+
+.t-footer__locale {
+    @include susy-breakpoint($large-breakpoint, $large-layout) {
+        margin-right: $unit*3;
+    }
+
+    min-height: auto;
+    margin-bottom: $unit*2;
+
+    color: $neutral-00;
+    font-size: $small-font-size;
+
+    .pw-button__inner {
+        min-height: auto;
+        padding: 0;
+    }
+}

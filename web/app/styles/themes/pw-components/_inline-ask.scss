@@ -1,0 +1,68 @@
+// Inline Ask Theme
+// ===
+
+.pw-inline-ask {
+    //
+}
+
+// Description text
+// ---
+
+.pw-inline-ask__description {
+    margin-bottom: $unit * 1.5;
+}
+
+// Success container
+// ---
+
+.pw-inline-ask__success {
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    padding: $unit * 1.5;
+    background: rgba($light-success-color, 0.1);
+
+    list-style: none;
+}
+
+.pw-inline-ask__success-icon {
+    color: $success-color;
+
+    fill: $success-color;
+}
+
+.pw-inline-ask__success-text {
+    margin-left: $unit * 1.5;
+}
+
+// Sign Up button
+// ---
+
+.pw-inline-ask__button {
+    flex: initial;
+    width: 100%;
+    background-color: transparent;
+
+    color: $brand-color;
+
+    &:active,
+    &:focus {
+        border-color: $tertiary-brand-color;
+
+        color: $tertiary-brand-color;
+    }
+
+    .pw-button__inner {
+        border: 1px solid $brand-color;
+    }
+
+    &[disabled] {
+        background-color: $neutral-15;
+
+        color: $neutral-30;
+
+        .pw-button__inner {
+            border-color: transparent;
+        }
+    }
+}

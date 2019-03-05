@@ -1,0 +1,12 @@
+.m-product-list__filter-modal {
+    min-height: calc(100vh - #{$unit * 6.5});
+
+    &.pw-sheet.pw--slide-right,
+    &.pw-sheet.pw--slide-left {
+        .pw-sheet__inner {
+            @include susy-breakpoint($medium-breakpoint, $medium-layout) {
+                max-width: 40%; // 1
+            }
+        }
+    }
+}

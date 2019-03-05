@@ -1,0 +1,13 @@
+// Account
+// ===
+
+.t-account-dashboard {
+    min-height: calc(100vh - #{$header-height} - #{$footer-height});
+    padding-bottom: $unit * 1.5;
+
+    background-color: $neutral-10;
+
+    .pw-list-tile__content {
+        color: $font-color;
+    }
+}

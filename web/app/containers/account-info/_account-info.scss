@@ -1,0 +1,18 @@
+// AccountInfo
+// ===
+
+.t-account-info {
+    // Root Class. Contains all core styles, typically for the template's
+    // wrapper element.
+}
+
+// Account info sub-heading
+// ---
+
+.t-account-info__sub-heading {
+    padding: $unit*2 $unit*1.5 $unit*1.5;
+    border-top: $border;
+    border-bottom: $border;
+
+    background-color: $neutral-10;
+}

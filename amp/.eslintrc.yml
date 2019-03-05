@@ -1,0 +1,15 @@
+extends:
+  - './node_modules/mobify-code-style/es6/mobify-es6-react-a11y.yml'
+env:
+  node: true
+  jest: true
+rules:
+  # We're using Node 8, so we have to use require statements
+  import/no-commonjs: 'off'
+  react/prefer-stateless-function:
+  - error
+  - ignorePureComponents: true
+settings:
+  import/resolver:
+    webpack:
+      config: '../amp/webpack.config.js'

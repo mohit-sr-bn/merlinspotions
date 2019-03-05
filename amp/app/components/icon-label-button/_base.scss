@@ -1,0 +1,16 @@
+@import 'component-base';
+
+// Icon Label Button
+
+.c-icon-label-button,
+.c-icon-label-button:active,
+.c-icon-label-button:focus {
+    margin: 0;
+    padding: 0;
+    border: 0;
+
+    background: none;
+    background-color: transparent;
+
+    color: inherit;
+}

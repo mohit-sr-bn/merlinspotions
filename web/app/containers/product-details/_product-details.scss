@@ -1,0 +1,117 @@
+// Product Details
+// ===
+
+.t-product-details {
+    // Root Class. Contains all core styles, typically for the template's
+    // wrapper element.
+
+    margin-right: gutter();
+    margin-left: gutter();
+
+    @include susy-breakpoint($large-breakpoint, $large-layout) {
+        margin-right: gutter();
+        margin-left: gutter();
+    }
+}
+
+.t-product-details__overview {
+    @include susy-breakpoint($medium-breakpoint, $medium-layout) {
+        display: flex;
+    }
+}
+
+
+.t-product-details__carousel {
+    margin-right: -(gutter());
+    margin-left: -(gutter());
+
+    @include susy-breakpoint($medium-breakpoint, $medium-layout) {
+        flex-basis: span(7);
+        margin-right: gutter() * 2;
+    }
+    @include susy-breakpoint($large-breakpoint, $large-layout) {
+        margin-right: gutter();
+        margin-left: 0;
+    }
+    @include susy-breakpoint($xlarge-breakpoint, $large-layout) {
+        flex-basis: span(8);
+    }
+}
+
+.t-product-details__info {
+    @include susy-breakpoint($medium-breakpoint, $medium-layout) {
+        flex-basis: span(5);
+    }
+    @include susy-breakpoint($xlarge-breakpoint, $large-layout) {
+        flex-basis: span(4);
+    }
+}
+
+
+// Breadcrumbs
+// ---
+
+.t-product-details__breadcrumbs {
+    margin-top: $unit;
+    margin-bottom: $unit;
+}
+
+
+// Description
+// ---
+
+.t-product-details__price {
+    font-size: $bigger-font-size;
+    line-height: $huge-line-height;
+}
+
+.t-product-details__indicator {
+    display: flex;
+    justify-content: center;
+    padding: $unit * 1.5;
+    border: $border;
+}
+
+
+.t-product-details__share-n-save {
+    display: flex;
+    margin-right: -(gutter());
+    margin-left: -(gutter());
+    border-top: $light-border;
+
+    @include susy-breakpoint($medium-breakpoint, $medium-layout) {
+        margin: 0;
+        border: 0;
+    }
+}
+
+.t-product-details__save {
+    width: 100%;
+    border-right: $light-border;
+
+    color: $brand-color;
+    letter-spacing: normal;
+
+    fill: $brand-color;
+
+    @include susy-breakpoint($medium-breakpoint, $medium-layout) {
+        border-right: 1px solid transparent;
+    }
+}
+
+
+// Product Details Accordion
+// ---
+
+.t-product-details__more-info {
+    margin-right: -(gutter());
+    margin-left: -(gutter());
+
+    @include susy-breakpoint($large-breakpoint, $large-layout) {
+        width: span(7);
+        margin: gutter() 0;
+    }
+    @include susy-breakpoint($xlarge-breakpoint, $large-layout) {
+        width: span(8);
+    }
+}

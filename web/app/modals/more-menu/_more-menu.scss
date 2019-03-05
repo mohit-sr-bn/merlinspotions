@@ -1,0 +1,37 @@
+
+
+// 1 - "Simple menus always maintain a 16dp margin (phone) ... to the left and right edges of the screen."
+// see: https://material.io/guidelines/components/menus.html#menus-simple-menus
+
+.m-more-menu {
+    position: fixed;
+    top: $unit*2; // 1
+    right: $unit*2; // 1
+    z-index: 999;
+
+    display: flex;
+    overflow-y: auto; // 1
+    flex-direction: column;
+    flex: 1 1 auto;
+
+    opacity: 0;
+    background-color: white;
+    box-shadow: $box-shadow;
+
+    transition: opacity 200ms ease-in;
+
+    &.m--active {
+        opacity: 1;
+    }
+}
+
+.m-more-menu__shade {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: $z3-depth;
+
+    opacity: 0;
+}

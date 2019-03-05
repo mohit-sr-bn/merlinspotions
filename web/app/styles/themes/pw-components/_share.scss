@@ -1,0 +1,26 @@
+// Share Theme
+// ===
+
+
+// Share Options
+// ---
+
+.pw-share__option {
+    background: transparent;
+}
+
+.pw-share__option-icon {
+    .pw-icon.pw--x-large {
+        width: $unit * 5;
+        height: $unit * 5;
+    }
+
+    .pw-icon-label__label {
+        color: $neutral-40;
+        text-transform: capitalize;
+    }
+}
+
+.pw-share__option + .pw-share__option {
+    margin-top: $unit * 3;
+}

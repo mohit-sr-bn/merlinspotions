@@ -1,0 +1,20 @@
+@import '../../component-base';
+
+// Header Bar Theme
+// ===
+
+.a-header-bar {
+    padding: $unit/2;
+
+    background-color: $brand-color;
+
+    color: $neutral-00;
+}
+
+
+// Title
+// ---
+
+.a-header-bar__title {
+    line-height: 0;
+}

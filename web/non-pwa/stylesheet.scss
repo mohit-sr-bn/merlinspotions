@@ -1,0 +1,8 @@
+@charset 'UTF-8';
+
+@import '../app/styles/lib';
+@import '../app/styles/variables';
+@import '../app/styles/base';
+
+// CSS for the Push Messaging "Ask" iframe injected on desktop clients
+@import './styles/messaging-iframe';

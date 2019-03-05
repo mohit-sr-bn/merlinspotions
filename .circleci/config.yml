@@ -1,0 +1,685 @@
+version: 2
+references:
+  container_config: &container_config
+    docker:
+      - image: mobify/cci-docker-primary:latest
+    working_directory: /home/ubuntu/merlinspotions/
+
+  repo_cache_key: &repo_cache_key
+    merlinspotions-repo-{{ .Branch }}-{{ .Revision }}
+
+  npm_cache_key: &npm_cache_key
+    merlinspotions-web-npm-v3-{{ .Branch }}-{{ checksum "web/package.json" }}-{{ checksum ".nvmrc" }}
+
+  amp_npm_cache_key: &amp_npm_cache_key
+    merlinspotions-amp-npm-v1-{{ .Branch }}-{{ checksum "amp/package.json" }}-{{ checksum ".nvmrc" }}
+
+  build_cache_key: &build_cache_key
+    merlinspotions-build-{{ .Branch }}-{{ checksum ".circle-sha" }}
+
+  restore_repo: &restore_repo
+    restore_cache:
+      keys:
+        - *repo_cache_key
+
+  restore_node_modules: &restore_node_modules
+    restore_cache:
+      keys:
+        - *npm_cache_key
+
+  restore_amp_node_modules: &restore_amp_node_modules
+    restore_cache:
+      keys:
+        - *amp_npm_cache_key
+
+  restore_build: &restore_build
+    restore_cache:
+      keys:
+        - *build_cache_key
+
+  configure_node: &configure_node
+    run:
+      name: Configure node version
+      command: |
+          # Adds commands to the file that's sourced
+          # before every 'run', so that the node version
+          # configured in .nvmrc will be used.
+          set +e
+          touch $BASH_ENV
+          echo 'unset npm_config_prefix' >> $BASH_ENV
+          echo 'export NVM_DIR=/usr/local/nvm' >> $BASH_ENV
+          echo '. "$NVM_DIR/nvm.sh"'  >> $BASH_ENV
+          echo 'nvm use --delete-prefix --silent' >> $BASH_ENV
+          echo 'node -v' >> $BASH_ENV
+          echo 'export PATH="${PATH}:$(dirname $(nvm which | tail -1))"' >> $BASH_ENV
+
+jobs:
+  build:
+    <<: *container_config
+    steps:
+      - checkout
+      - run:
+          name: save SHA to a file
+          command: echo $CIRCLE_SHA1 > .circle-sha
+      - save_cache:
+          key: *repo_cache_key
+          paths:
+            - .
+      - *restore_node_modules
+      - *restore_amp_node_modules
+      - *configure_node
+      - run:
+          name: Install Dependencies
+          command: npm install
+          working_directory: /home/ubuntu/merlinspotions/web/
+      - run:
+          name: Install AMP Dependencies
+          command: npm install
+          working_directory: /home/ubuntu/merlinspotions/amp/
+      - run:
+          name: Install Dependencies Again
+          command: npm install
+          working_directory: /home/ubuntu/merlinspotions/web/
+      - run:
+          name: Rebuild node-sass
+          command: npm rebuild node-sass --force
+          working_directory: /home/ubuntu/merlinspotions/web/
+      - run:
+          name: Build Project
+          command: npm run prod:build
+          working_directory: /home/ubuntu/merlinspotions/web/
+      - save_cache:
+          key: *npm_cache_key
+          paths:
+            - /home/ubuntu/merlinspotions/web/node_modules
+      - save_cache:
+          key: *amp_npm_cache_key
+          paths:
+            - /home/ubuntu/merlinspotions/amp/node_modules
+      - save_cache:
+          key: *build_cache_key
+          paths:
+            - /home/ubuntu/merlinspotions/web/build
+            - /home/ubuntu/merlinspotions/web/tmp
+            - /home/ubuntu/merlinspotions/web/app/loader-routes.js
+
+  test-unit:
+    <<: *container_config
+    steps:
+      - *restore_repo
+      - *restore_node_modules
+      - *restore_amp_node_modules
+      # We need to restore the build so that web/app/loader-routes.js
+      # is available for the SSR tests
+      - *restore_build
+      - *configure_node
+      - run:
+          name: Lint
+          command: pwd && npm run lint
+          working_directory: /home/ubuntu/merlinspotions/web/
+      - run:
+          name: Run Unit Tests (including SSR)
+          command: npm test -- --runInBand
+          working_directory: /home/ubuntu/merlinspotions/web/
+      - run:
+          name: AMP
+          command: pwd && npm run test:all
+          working_directory: /home/ubuntu/merlinspotions/amp/
+
+  test-e2e-amp:
+    <<: *container_config
+    steps:
+      - *restore_repo
+      - *restore_node_modules
+      - *restore_amp_node_modules
+      - *configure_node
+      - run:
+          name: Run AMP Smoke Test
+          command: xvfb-run -a ./tests/e2e/smoke-test.sh
+          when: always
+          working_directory: /home/ubuntu/merlinspotions/amp/
+
+  test-e2e-ssr:
+    <<: *container_config
+    steps:
+      - *restore_repo
+      - *restore_node_modules
+      - *restore_build
+      - *configure_node
+      - run:
+          name: Start SSR Server
+          command: env SSR_ENABLED=1 WEBPACK_OPTIONS="--display=minimal" SSR_QUIET=1 npm run ssr
+          when: always
+          background: true
+          working_directory: /home/ubuntu/merlinspotions/web/
+      - run:
+          name: Run SSR Smoke Test
+          command: xvfb-run -a ./tests/e2e/test-scripts/ssr-smoke-test.sh
+          when: always
+          working_directory: /home/ubuntu/merlinspotions/web/
+
+  test-e2e-merlins:
+    <<: *container_config
+    # Uncomment when running full Merlin's E2E suite with parallelism
+    # parallelism: 2
+    steps:
+      - *restore_repo
+      - *restore_node_modules
+      - *restore_build
+      - *configure_node
+      - run:
+          name: Start Test Server
+          command: npm run test:server
+          background: true
+          working_directory: /home/ubuntu/merlinspotions/web/
+      - run:
+          name: Wait for Server
+          command: bash ./scripts/wait-for-dependencies.sh
+          working_directory: /home/ubuntu/merlinspotions/web/
+      - run:
+          name: Run home E2E test
+          command: xvfb-run -a npm run test:e2e -- --test tests/e2e/workflows/merlins/home-example.js
+          when: always
+          working_directory: /home/ubuntu/merlinspotions/web/
+      - run:
+          name: Run push-subscribe E2E test
+          command: xvfb-run -a npm run test:e2e -- --test tests/e2e/workflows/merlins/push-subscribe.js
+          when: always
+          working_directory: /home/ubuntu/merlinspotions/web/
+      # Uncomment to run full suite of Merlin's E2E tests
+      # - run:
+      #     name: Run end2end Test
+      #     command: xvfb-run -a ./tests/e2e/test-scripts/run-e2e-in-parallel.sh
+      #     when: always
+      #     working_directory: /home/ubuntu/merlinspotions/web/
+      - store_test_results:
+          path: web/tests/reports/
+          when: always
+      - store_artifacts:
+          path: web/tests/screenshots/
+          when: always
+
+  test-e2e-chrome-incognito:
+    <<: *container_config
+    steps:
+      - *restore_repo
+      - *restore_node_modules
+      - *restore_amp_node_modules
+      - *restore_build
+      - *configure_node
+      - run:
+          name: Start Test Server
+          command: npm run test:server
+          background: true
+          working_directory: /home/ubuntu/merlinspotions/web/
+      - run:
+          name: Verify that PWA renders in private browsing mode
+          command: xvfb-run -a npm run test:e2e -- -e chrome_incognito --test tests/e2e/workflows/merlins/guest-checkout.js
+          when: always
+          working_directory: /home/ubuntu/merlinspotions/web/
+      - store_test_results:
+          path: web/tests/reports/
+          when: always
+      - store_artifacts:
+          path: web/tests/screenshots/
+          when: always
+
+  test-e2e-googlebot:
+    <<: *container_config
+    steps:
+      - *restore_repo
+      - *restore_node_modules
+      - *restore_build
+      - *configure_node
+      - run:
+          name: Start Test Server
+          command: npm run test:server
+          background: true
+          working_directory: /home/ubuntu/merlinspotions/web/
+      - run:
+          name: Verify that PWA renders on Googlebot
+          command: xvfb-run -a npm run test:e2e -- -e chrome_googlebot --test tests/e2e/workflows/merlins/home-example.js
+          when: always
+          working_directory: /home/ubuntu/merlinspotions/web/
+      - store_test_results:
+          path: web/tests/reports/
+          when: always
+      - store_artifacts:
+          path: web/tests/screenshots/
+          when: always
+
+  test-e2e-sfcc:
+    <<: *container_config
+    steps:
+      - *restore_repo
+      - *restore_node_modules
+      - *configure_node
+      - run:
+          name: Change Connector to SFCC
+          command: bash ./scripts/change-connector.sh sfcc
+          working_directory: /home/ubuntu/merlinspotions/web/
+      - run:
+          name: Build Project
+          command: npm run prod:build
+          working_directory: /home/ubuntu/merlinspotions/web/
+      - run:
+          name: Start Test Server
+          command: npm run test:server
+          background: true
+          working_directory: /home/ubuntu/merlinspotions/web/
+      - run:
+          name: Wait for Server
+          command: bash ./scripts/wait-for-dependencies.sh
+          working_directory: /home/ubuntu/merlinspotions/web/
+      - run:
+          name: Run end2end Test on SFCC connector
+          command: xvfb-run -a npm run test:e2e -- --tag sfcc --group workflows/sfcc
+          when: always
+          working_directory: /home/ubuntu/merlinspotions/web/
+      - store_test_results:
+          path: web/tests/reports/
+          when: always
+      - store_artifacts:
+          path: web/tests/screenshots/
+          when: always
+
+  test-e2e-sfcc-saucelabs:
+    <<: *container_config
+    steps:
+      - *restore_repo
+      - *restore_node_modules
+      - run:
+          name: Change Connector to SFCC
+          command: bash ./scripts/change-connector.sh sfcc
+          working_directory: /home/ubuntu/merlinspotions/web/
+      - run:
+          name: Build Project
+          command: npm run prod:build
+          working_directory: /home/ubuntu/merlinspotions/web/
+      - run:
+          name: Start Test Server
+          command: npm run test:server
+          background: true
+          working_directory: /home/ubuntu/merlinspotions/web/
+      - run:
+          name: Start Sauce Connect
+          command: node launch-sauce-connect.js
+          when: always
+          background: true
+          working_directory: /home/ubuntu/merlinspotions/web/tests/e2e/sauce-connect
+      - run:
+          name: Wait for Sauce Connect
+          command: bash ./wait-for-sauce-connect.sh
+          working_directory: /home/ubuntu/merlinspotions/web/tests/e2e/sauce-connect
+      - run:
+          name: Wait for Server
+          command: bash ./scripts/wait-for-dependencies.sh
+          working_directory: /home/ubuntu/merlinspotions/web/
+      - run:
+          name: Run end2end test on Saucelabs on iOS emulator
+          command: xvfb-run -a npm run test:e2e -- -e saucelabs_ios --tag sfcc --group workflows/sfcc
+          when: always
+          working_directory: /home/ubuntu/merlinspotions/web/
+      - store_test_results:
+          path: web/tests/reports/
+          when: always
+      - store_artifacts:
+          path: web/tests/screenshots/
+          when: always
+
+  test-e2e-hybris:
+    <<: *container_config
+    steps:
+      - *restore_repo
+      - *restore_node_modules
+      - *configure_node
+      - run:
+          name: Change Connector to Hybris
+          command: bash ./scripts/change-connector.sh hybris
+          working_directory: /home/ubuntu/merlinspotions/web/
+      - run:
+          name: Build Project
+          command: npm run prod:build
+          working_directory: /home/ubuntu/merlinspotions/web/
+      - run:
+          name: Start Test Server
+          command: npm run test:server
+          background: true
+          working_directory: /home/ubuntu/merlinspotions/web/
+      - run:
+          name: Wait for Server
+          command: bash ./scripts/wait-for-dependencies.sh
+          working_directory: /home/ubuntu/merlinspotions/web/
+      - run:
+          name: Run end2end test on hybris connector
+          command: xvfb-run -a npm run test:e2e -- --tag hybris --group workflows/hybris
+          when: always
+          working_directory: /home/ubuntu/merlinspotions/web/
+      - store_test_results:
+          path: web/tests/reports/
+          when: always
+      - store_artifacts:
+          path: web/tests/screenshots/
+          when: always
+
+  test-e2e-hybris-saucelabs:
+    <<: *container_config
+    steps:
+      - *restore_repo
+      - *restore_node_modules
+      - *configure_node
+      - run:
+          name: Change Connector to Hybris
+          command: bash ./scripts/change-connector.sh hybris
+          working_directory: /home/ubuntu/merlinspotions/web/
+      - run:
+          name: Build Project
+          command: npm run prod:build
+          working_directory: /home/ubuntu/merlinspotions/web/
+      - run:
+          name: Start Test Server
+          command: npm run test:server
+          background: true
+          working_directory: /home/ubuntu/merlinspotions/web/
+      - run:
+          name: Start Sauce Connect
+          command: node launch-sauce-connect.js
+          when: always
+          background: true
+          working_directory: /home/ubuntu/merlinspotions/web/tests/e2e/sauce-connect
+      - run:
+          name: Wait for Sauce Connect
+          command: bash ./wait-for-sauce-connect.sh
+          working_directory: /home/ubuntu/merlinspotions/web/tests/e2e/sauce-connect
+      - run:
+          name: Wait for Server
+          command: bash ./scripts/wait-for-dependencies.sh
+          working_directory: /home/ubuntu/merlinspotions/web/
+      - run:
+          name: Run end2end test on Saucelabs on Android emulator
+          command: xvfb-run -a npm run test:e2e -- -e saucelabs_android --tag hybris --group workflows/hybris
+          when: always
+          working_directory: /home/ubuntu/merlinspotions/web/
+      - store_test_results:
+          path: web/tests/reports/
+          when: always
+      - store_artifacts:
+          path: web/tests/screenshots/
+          when: always
+
+  test-e2e-stub:
+    <<: *container_config
+    steps:
+      - *restore_repo
+      - *restore_node_modules
+      - *configure_node
+      - run:
+          name: Change Connector
+          command: bash ./scripts/change-connector.sh stub
+          working_directory: /home/ubuntu/merlinspotions/web/
+      - run:
+          name: Build Project
+          command: npm run prod:build
+          working_directory: /home/ubuntu/merlinspotions/web/
+      - run:
+          name: Start Test Server
+          command: npm run test:server
+          background: true
+          working_directory: /home/ubuntu/merlinspotions/web/
+      - run:
+          name: Wait for Server
+          command: bash ./scripts/wait-for-dependencies.sh
+          working_directory: /home/ubuntu/merlinspotions/web/
+      - run:
+          name: Run end2end Test on Stub connector
+          command: xvfb-run -a npm run test:e2e -- --tag stub --group workflows/stub
+          when: always
+          working_directory: /home/ubuntu/merlinspotions/web/
+      - store_test_results:
+          path: web/tests/reports/
+          when: always
+      - store_artifacts:
+          path: web/tests/screenshots/
+          when: always
+
+  test-performance:
+    <<: *container_config
+    steps:
+      - *restore_repo
+      - *restore_node_modules
+      - *restore_build
+      - *configure_node
+      - run:
+          name: Start Test Server
+          command: npm run test:server
+          background: true
+          working_directory: /home/ubuntu/merlinspotions/web/
+      - run:
+          name: Wait for Server
+          command: bash ./scripts/wait-for-dependencies.sh
+          working_directory: /home/ubuntu/merlinspotions/web/
+      - run:
+          name: Accept Cert
+          command: bash ./scripts/accept-cert-ci.sh
+          working_directory: /home/ubuntu/merlinspotions/web/
+      - run:
+          name: Analyzing Build Size
+          command: npm run test:max-file-size
+          working_directory: /home/ubuntu/merlinspotions/web/
+      - run:
+          name: Lighthouse Tests
+          command: xvfb-run -a npm run test:lighthouse production preview --silent
+          when: always
+          working_directory: /home/ubuntu/merlinspotions/web/
+      - store_artifacts:
+          path: web/tests/performance/lighthouse/reports/
+          when: always
+
+  test-e2e-desktop:
+    <<: *container_config
+    steps:
+      - *restore_repo
+      - *restore_node_modules
+      - *restore_build
+      - *configure_node
+      - run:
+          name: Start SSR Server
+          command: env SSR_ENABLED=1 WEBPACK_OPTIONS="--display=minimal" SSR_QUIET=1 npm run ssr
+          when: always
+          background: true
+          working_directory: /home/ubuntu/merlinspotions/web/
+      - run:
+          name: Wait for SSR
+          command: bash ./wait-for-server.sh 3443
+          working_directory: /home/ubuntu/merlinspotions/web/tests/e2e/test-scripts/
+      - run:
+          name: Start Sauce Connect
+          command: node launch-sauce-connect.js
+          when: always
+          background: true
+          working_directory: /home/ubuntu/merlinspotions/web/tests/e2e/sauce-connect
+      - run:
+          name: Wait for Sauce Connect
+          command: bash ./wait-for-sauce-connect.sh
+          working_directory: /home/ubuntu/merlinspotions/web/tests/e2e/sauce-connect
+      - run:
+          name: Run end2end test on Saucelabs Chrome 66 Windows 10
+          command: npm run test:e2e-desktop -- --env saucelabs_chrome66
+          when: always
+          working_directory: /home/ubuntu/merlinspotions/web/
+      - store_test_results:
+          path: web/tests/reports/
+          when: always
+      - store_artifacts:
+          path: web/tests/screenshots/
+          when: always
+
+  upload-merlins:
+    <<: *container_config
+    steps:
+      - *restore_repo
+      - *restore_node_modules
+      - *restore_build
+      - *configure_node
+      - run:
+          name: Upload Bundle
+          command: bash ./scripts/ci-upload.sh Merlins
+          working_directory: /home/ubuntu/merlinspotions/web/
+
+  upload-sfcc:
+    <<: *container_config
+    steps:
+      - *restore_repo
+      - *restore_node_modules
+      - *configure_node
+      - run:
+          name: Change Connector to SFCC
+          command: bash ./scripts/change-connector.sh sfcc
+          working_directory: /home/ubuntu/merlinspotions/web/
+      - run:
+          name: Change Manifest start_url to SFCC sub-domain
+          command: bash ./scripts/change-manifest.sh sfcc
+          working_directory: /home/ubuntu/merlinspotions/web/
+      - run:
+          name: Upload Bundle
+          command: bash ./scripts/ci-upload.sh SFCC
+          working_directory: /home/ubuntu/merlinspotions/web/
+
+  upload-hybris:
+    <<: *container_config
+    steps:
+      - *restore_repo
+      - *restore_node_modules
+      - *configure_node
+      - run:
+          name: Change Connector to Hybris
+          command: bash ./scripts/change-connector.sh hybris
+          working_directory: /home/ubuntu/merlinspotions/web/
+      - run:
+          name: Change Manifest start_url to Hybris sub-domain
+          command: bash ./scripts/change-manifest.sh hybris
+          working_directory: /home/ubuntu/merlinspotions/web/
+      - run:
+          name: Upload Bundle
+          command: bash ./scripts/ci-upload.sh Hybris
+          working_directory: /home/ubuntu/merlinspotions/web/
+
+  upload-stub:
+    <<: *container_config
+    steps:
+      - *restore_repo
+      - *restore_node_modules
+      - *configure_node
+      - run:
+          name: Change Connector to Stub
+          command: bash ./scripts/change-connector.sh stub
+          working_directory: /home/ubuntu/merlinspotions/web/
+      - run:
+          name: Change Manifest start_url to stating sub-domain
+          command: bash ./scripts/change-manifest.sh staging
+          working_directory: /home/ubuntu/merlinspotions/web/
+      - run:
+          name: Upload Bundle
+          command: bash ./scripts/ci-upload.sh Stub
+          working_directory: /home/ubuntu/merlinspotions/web/
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build
+      - test-unit:
+          requires:
+            - build
+      - test-e2e-amp:
+          requires:
+            - build
+      - test-e2e-ssr:
+          requires:
+            - build
+      - test-performance:
+          requires:
+            - build
+      - test-e2e-chrome-incognito:
+          requires:
+            - build
+          filters:
+            branches:
+              only: [master, /release-.*/, develop]
+      - test-e2e-desktop:
+          requires:
+            - build
+            - test-e2e-ssr
+          filters:
+            branches:
+              only: [master, /release-.*/, develop, /DESKTOP-.*/]
+      - test-e2e-googlebot:
+          requires:
+            - build
+      - upload-merlins:
+          requires:
+            - build
+            - test-unit
+            - test-performance
+          filters:
+            branches:
+              only: [master, /release-.*/]
+      - test-e2e-sfcc:
+          requires:
+            - build
+      - upload-sfcc:
+          requires:
+            - build
+            - test-unit
+            - test-e2e-sfcc
+            - test-performance
+          filters:
+            branches:
+              only: [master, /release-.*/]
+      - test-e2e-hybris:
+          requires:
+            - build
+      - upload-hybris:
+          requires:
+            - build
+            - test-unit
+            - test-e2e-hybris
+            - test-performance
+          filters:
+            branches:
+              only: [master, /release-.*/]
+      - test-e2e-stub:
+          requires:
+            - build
+      - upload-stub:
+          requires:
+            - build
+            - test-unit
+            - test-e2e-stub
+            - test-performance
+          filters:
+            branches:
+              only: [master, /release-.*/]
+
+  e2e-nightly-run:
+    triggers:
+      - schedule:
+          # Run at midnight Pacific time
+          cron: "0 8 * * *"
+          filters:
+            branches:
+              only: [master, /release-.*/, /googlebot.*/, /nightly.*/]
+    jobs:
+      - build
+      - test-performance:
+          requires:
+            - build
+      - test-e2e-sfcc:
+          requires:
+            - build
+      - test-e2e-hybris-saucelabs:
+          requires:
+            - build
+      - test-e2e-googlebot:
+          requires:
+            - build

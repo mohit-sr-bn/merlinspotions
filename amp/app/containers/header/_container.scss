@@ -1,0 +1,58 @@
+@import '../../styles/component-base';
+
+// Header
+// ===
+//
+
+
+// Root
+// ---
+// 1. The expected height of the site HeaderBar (.t-header__bar)
+// 2. Ensure header bar appears above page content
+
+.t-header {
+    padding-top: $header-height; // 1
+}
+
+
+// Bar
+// ---
+
+.t-header__bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: $z2-depth; // 2
+
+    width: 100vw;
+
+    box-shadow: $large-box-shadow;
+}
+
+
+// Link
+// ---
+
+.t-header__link {
+    color: currentColor;
+
+    &:focus,
+    &:active {
+        color: currentColor;
+    }
+
+    .c-button__inner {
+        padding: 0;
+    }
+}
+
+
+// Search Submit Button
+// ---
+//
+// 1. Add this border to simulating having padding without have to effect the
+//    button's height (like padding would)
+
+.t-header__search-submit-button {
+    border: 4px solid $neutral-00; // 1
+}

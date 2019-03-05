@@ -1,0 +1,35 @@
+@import 'component-base';
+
+// Stepper Theme
+// ===
+//
+
+.a-stepper {
+    input {
+        width: $tap-size;
+        border: 0;
+
+        text-align: center;
+    }
+
+    .a-button {
+        background-color: $brand-color;
+
+        color: $neutral-00;
+
+        &:active,
+        &:focus {
+            background-color: $tertiary-brand-color;
+        }
+
+        &[disabled] {
+            background-color: $neutral-15;
+
+            color: $neutral-30;
+        }
+    }
+}
+
+.a-stepper__inner {
+    border: $border;
+}

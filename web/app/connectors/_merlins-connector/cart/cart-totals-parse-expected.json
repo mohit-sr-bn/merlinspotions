@@ -1,0 +1,9 @@
+{
+    "discount": "-1.5",
+    "shipping": {
+        "amount": "0"
+    },
+    "subtotal": "10",
+    "tax": "0.43",
+    "orderTotal": "8.93"
+}

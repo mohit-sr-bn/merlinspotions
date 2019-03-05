@@ -1,0 +1,19 @@
+// ProductItem
+// ===
+
+.c-product-item {
+    // Root Class. Contains all core styles, typically for the component's
+    // wrapper element.
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+
+
+// Category
+// ---
+
+.c-product-item__category {
+    font-size: $font-size - 2;
+    line-height: 1em;
+}
